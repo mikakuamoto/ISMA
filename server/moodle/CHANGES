@@ -1,0 +1,2087 @@
+CHANGES
+=======
+
+This file contains all the raw change logs from the past month,
+so that you can see exactly what changes have been made recently.
+
+---------------------------------------------------------------
+
+2012-03-09 Friday 20:24  moodlerobot
+
+	* githash.php, version.php, admin/settings/courses.php,
+	backup/moodle2/backup_final_task.class.php,
+	backup/moodle2/backup_root_task.class.php,
+	backup/moodle2/backup_settingslib.php,
+	backup/moodle2/backup_stepslib.php,
+	backup/moodle2/restore_root_task.class.php,
+	backup/moodle2/restore_settingslib.php,
+	backup/moodle2/restore_stepslib.php,
+	backup/util/dbops/backup_controller_dbops.class.php,
+	backup/util/dbops/restore_dbops.class.php,
+	backup/util/helper/backup_cron_helper.class.php,
+	backup/util/ui/renderer.php, cohort/lib.php,
+	install/lang/ca_valencia/admin.php,
+	install/lang/ca_valencia/langconfig.php,
+	install/lang/eu/install.php, install/lang/nl/install.php,
+	install/lang/pt/admin.php, install/lang/pt/error.php,
+	install/lang/pt/install.php, lang/en/backup.php, lib/moodlelib.php,
+	lib/sessionlib.php, lib/db/upgrade.php,
+	theme/formal_white/style/core.css,
+	theme/formal_white/style/course.css,
+	theme/formal_white/style/formal_white.css,
+	theme/formal_white/style/forum.css,
+	theme/formal_white/style/tabs.css, githash.php, version.php,
+	lib/moodlelib.php: 
+	
+	weekly cvs snapshot
+
+2012-03-09 Friday 20:20  moodlerobot
+
+	* githash.php, version.php, admin/environment.xml, admin/index.php,
+	admin/cli/upgrade.php, admin/settings/courses.php,
+	backup/converter/moodle1/handlerlib.php,
+	backup/moodle2/backup_final_task.class.php,
+	backup/moodle2/backup_root_task.class.php,
+	backup/moodle2/backup_settingslib.php,
+	backup/moodle2/backup_stepslib.php,
+	backup/moodle2/restore_root_task.class.php,
+	backup/moodle2/restore_section_task.class.php,
+	backup/moodle2/restore_settingslib.php,
+	backup/moodle2/restore_stepslib.php,
+	backup/util/dbops/backup_controller_dbops.class.php,
+	backup/util/dbops/restore_dbops.class.php,
+	backup/util/helper/backup_cron_helper.class.php,
+	backup/util/ui/renderer.php,
+	backup/util/ui/restore_ui_components.php, cohort/lib.php,
+	course/lib.php, course/rest.php, course/view.php,
+	course/format/topics/format.php, enrol/externallib.php,
+	grade/report/grader/lib.php, install/lang/ca_valencia/admin.php,
+	install/lang/ca_valencia/langconfig.php,
+	install/lang/eu/install.php, install/lang/id/admin.php,
+	install/lang/id/moodle.php, install/lang/nl/install.php,
+	install/lang/pt/admin.php, install/lang/pt/error.php,
+	install/lang/pt/install.php, lang/en/admin.php, lang/en/backup.php,
+	lib/moodlelib.php, lib/questionlib.php, lib/sessionlib.php,
+	lib/thirdpartylibs.xml, lib/bennu/iCalendar_rfc2445.php,
+	lib/bennu/readme_moodle.txt, lib/db/upgrade.php,
+	lib/dml/moodle_database.php,
+	lib/dml/mssql_native_moodle_database.php,
+	lib/dml/mysqli_native_moodle_database.php,
+	lib/dml/oci_native_moodle_database.php,
+	lib/dml/pdo_moodle_database.php,
+	lib/dml/pgsql_native_moodle_database.php,
+	lib/dml/sqlsrv_native_moodle_database.php,
+	lib/htmlpurifier/HTMLPurifier.php,
+	lib/htmlpurifier/HTMLPurifier.safe-includes.php,
+	lib/htmlpurifier/readme_moodle.txt,
+	lib/htmlpurifier/HTMLPurifier/AttrTypes.php,
+	lib/htmlpurifier/HTMLPurifier/Config.php,
+	lib/htmlpurifier/HTMLPurifier/Encoder.php,
+	lib/htmlpurifier/HTMLPurifier/HTMLDefinition.php,
+	lib/htmlpurifier/HTMLPurifier/HTMLModuleManager.php,
+	lib/htmlpurifier/HTMLPurifier/URI.php,
+	lib/htmlpurifier/HTMLPurifier/URIDefinition.php,
+	lib/htmlpurifier/HTMLPurifier/URIFilter.php,
+	lib/htmlpurifier/HTMLPurifier/URIScheme.php,
+	lib/htmlpurifier/HTMLPurifier/AttrDef/Clone.php,
+	lib/htmlpurifier/HTMLPurifier/AttrDef/URI.php,
+	lib/htmlpurifier/HTMLPurifier/AttrDef/CSS/Ident.php,
+	lib/htmlpurifier/HTMLPurifier/AttrDef/HTML/Color.php,
+	lib/htmlpurifier/HTMLPurifier/AttrDef/HTML/ID.php,
+	lib/htmlpurifier/HTMLPurifier/AttrDef/URI/Host.php,
+	lib/htmlpurifier/HTMLPurifier/AttrTransform/Nofollow.php,
+	lib/htmlpurifier/HTMLPurifier/AttrTransform/TargetBlank.php,
+	lib/htmlpurifier/HTMLPurifier/ChildDef/List.php,
+	lib/htmlpurifier/HTMLPurifier/ChildDef/Table.php,
+	lib/htmlpurifier/HTMLPurifier/ConfigSchema/schema.ser,
+	lib/htmlpurifier/HTMLPurifier/ConfigSchema/schema/Core.ColorKeyword
+	s.txt,
+	lib/htmlpurifier/HTMLPurifier/ConfigSchema/schema/Core.EnableIDNA.t
+	xt,
+	lib/htmlpurifier/HTMLPurifier/ConfigSchema/schema/HTML.AllowedComme
+	nts.txt,
+	lib/htmlpurifier/HTMLPurifier/ConfigSchema/schema/HTML.AllowedComme
+	ntsRegexp.txt,
+	lib/htmlpurifier/HTMLPurifier/ConfigSchema/schema/HTML.SafeIframe.t
+	xt,
+	lib/htmlpurifier/HTMLPurifier/ConfigSchema/schema/HTML.TargetBlank.
+	txt,
+	lib/htmlpurifier/HTMLPurifier/ConfigSchema/schema/URI.SafeIframeReg
+	exp.txt,
+	lib/htmlpurifier/HTMLPurifier/Filter/ExtractStyleBlocks.php,
+	lib/htmlpurifier/HTMLPurifier/HTMLModule/Forms.php,
+	lib/htmlpurifier/HTMLPurifier/HTMLModule/Iframe.php,
+	lib/htmlpurifier/HTMLPurifier/HTMLModule/Legacy.php,
+	lib/htmlpurifier/HTMLPurifier/HTMLModule/List.php,
+	lib/htmlpurifier/HTMLPurifier/HTMLModule/Tables.php,
+	lib/htmlpurifier/HTMLPurifier/HTMLModule/TargetBlank.php,
+	lib/htmlpurifier/HTMLPurifier/Lexer/PEARSax3.php,
+	lib/htmlpurifier/HTMLPurifier/Lexer/PH5P.php,
+	lib/htmlpurifier/HTMLPurifier/Strategy/Composite.php,
+	lib/htmlpurifier/HTMLPurifier/Strategy/RemoveForeignElements.php,
+	lib/htmlpurifier/HTMLPurifier/URIFilter/HostBlacklist.php,
+	lib/htmlpurifier/HTMLPurifier/URIFilter/Munge.php,
+	lib/htmlpurifier/HTMLPurifier/URIFilter/SafeIframe.php,
+	lib/htmlpurifier/HTMLPurifier/URIScheme/https.php,
+	lib/simpletest/testhtmlpurifier.php,
+	lib/simpletest/testpurifier.php, login/forgot_password_form.php,
+	mod/assignment/lib.php,
+	mod/assignment/type/upload/assignment.class.php,
+	mod/assignment/type/uploadsingle/assignment.class.php,
+	mod/data/edit.php, mod/data/lib.php, mod/data/preset.php,
+	mod/data/field/textarea/field.class.php,
+	mod/data/field/textarea/mod.html,
+	mod/data/field/textarea/lang/en/datafield_textarea.php,
+	mod/scorm/styles.css, question/format.php,
+	question/import_form.php, question/engine/datalib.php,
+	question/format/blackboard_six/format.php, tag/coursetagslib.php,
+	theme/formal_white/style/core.css,
+	theme/formal_white/style/course.css,
+	theme/formal_white/style/formal_white.css,
+	theme/formal_white/style/forum.css,
+	theme/formal_white/style/tabs.css, theme/sky_high/config.php,
+	theme/sky_high/layout/frontpage.php,
+	theme/sky_high/layout/general.php,
+	theme/sky_high/layout/report.php, theme/sky_high/style/core.css,
+	theme/sky_high/style/pagelayout.css,
+	theme/sky_high/style/report.css, githash.php, version.php,
+	admin/environment.xml, admin/index.php, admin/cli/upgrade.php,
+	admin/settings/courses.php,
+	backup/converter/moodle1/handlerlib.php,
+	backup/moodle2/backup_final_task.class.php,
+	backup/moodle2/backup_root_task.class.php,
+	backup/moodle2/backup_settingslib.php,
+	backup/moodle2/backup_stepslib.php,
+	backup/moodle2/restore_root_task.class.php,
+	backup/moodle2/restore_section_task.class.php,
+	backup/moodle2/restore_settingslib.php,
+	backup/moodle2/restore_stepslib.php,
+	backup/util/dbops/backup_controller_dbops.class.php,
+	backup/util/dbops/restore_dbops.class.php,
+	backup/util/helper/backup_cron_helper.class.php,
+	backup/util/ui/renderer.php,
+	backup/util/ui/restore_ui_components.php,
+	blocks/participants/block_participants.php, cohort/lib.php,
+	course/lib.php, course/rest.php, course/view.php,
+	course/format/topics/format.php,
+	install/lang/ca_valencia/admin.php,
+	install/lang/ca_valencia/langconfig.php,
+	install/lang/eu/install.php, install/lang/nl/install.php,
+	install/lang/pt/admin.php, install/lang/pt/error.php,
+	install/lang/pt/install.php, lang/en/admin.php, lang/en/backup.php,
+	lib/moodlelib.php, lib/questionlib.php, lib/sessionlib.php,
+	lib/thirdpartylibs.xml, lib/bennu/iCalendar_rfc2445.php,
+	lib/bennu/readme_moodle.txt, lib/db/upgrade.php,
+	lib/dml/moodle_database.php,
+	lib/dml/mssql_native_moodle_database.php,
+	lib/dml/mysqli_native_moodle_database.php,
+	lib/dml/oci_native_moodle_database.php,
+	lib/dml/pdo_moodle_database.php,
+	lib/dml/pgsql_native_moodle_database.php,
+	lib/dml/sqlsrv_native_moodle_database.php,
+	lib/htmlpurifier/HTMLPurifier.php,
+	lib/htmlpurifier/HTMLPurifier.safe-includes.php,
+	lib/htmlpurifier/readme_moodle.txt,
+	lib/htmlpurifier/HTMLPurifier/AttrTypes.php,
+	lib/htmlpurifier/HTMLPurifier/Config.php,
+	lib/htmlpurifier/HTMLPurifier/Encoder.php,
+	lib/htmlpurifier/HTMLPurifier/HTMLDefinition.php,
+	lib/htmlpurifier/HTMLPurifier/HTMLModuleManager.php,
+	lib/htmlpurifier/HTMLPurifier/URI.php,
+	lib/htmlpurifier/HTMLPurifier/URIDefinition.php,
+	lib/htmlpurifier/HTMLPurifier/URIFilter.php,
+	lib/htmlpurifier/HTMLPurifier/URIScheme.php,
+	lib/htmlpurifier/HTMLPurifier/AttrDef/Clone.php,
+	lib/htmlpurifier/HTMLPurifier/AttrDef/URI.php,
+	lib/htmlpurifier/HTMLPurifier/AttrDef/CSS/Ident.php,
+	lib/htmlpurifier/HTMLPurifier/AttrDef/HTML/Color.php,
+	lib/htmlpurifier/HTMLPurifier/AttrDef/HTML/ID.php,
+	lib/htmlpurifier/HTMLPurifier/AttrDef/URI/Host.php,
+	lib/htmlpurifier/HTMLPurifier/AttrTransform/Nofollow.php,
+	lib/htmlpurifier/HTMLPurifier/AttrTransform/TargetBlank.php,
+	lib/htmlpurifier/HTMLPurifier/ChildDef/List.php,
+	lib/htmlpurifier/HTMLPurifier/ChildDef/Table.php,
+	lib/htmlpurifier/HTMLPurifier/ConfigSchema/schema.ser,
+	lib/htmlpurifier/HTMLPurifier/ConfigSchema/schema/Core.ColorKeyword
+	s.txt,
+	lib/htmlpurifier/HTMLPurifier/ConfigSchema/schema/Core.EnableIDNA.t
+	xt,
+	lib/htmlpurifier/HTMLPurifier/ConfigSchema/schema/HTML.AllowedComme
+	nts.txt,
+	lib/htmlpurifier/HTMLPurifier/ConfigSchema/schema/HTML.AllowedComme
+	ntsRegexp.txt,
+	lib/htmlpurifier/HTMLPurifier/ConfigSchema/schema/HTML.SafeIframe.t
+	xt,
+	lib/htmlpurifier/HTMLPurifier/ConfigSchema/schema/HTML.TargetBlank.
+	txt,
+	lib/htmlpurifier/HTMLPurifier/ConfigSchema/schema/URI.SafeIframeReg
+	exp.txt,
+	lib/htmlpurifier/HTMLPurifier/Filter/ExtractStyleBlocks.php,
+	lib/htmlpurifier/HTMLPurifier/HTMLModule/Forms.php,
+	lib/htmlpurifier/HTMLPurifier/HTMLModule/Iframe.php,
+	lib/htmlpurifier/HTMLPurifier/HTMLModule/Legacy.php,
+	lib/htmlpurifier/HTMLPurifier/HTMLModule/List.php,
+	lib/htmlpurifier/HTMLPurifier/HTMLModule/Tables.php,
+	lib/htmlpurifier/HTMLPurifier/HTMLModule/TargetBlank.php,
+	lib/htmlpurifier/HTMLPurifier/Lexer/PEARSax3.php,
+	lib/htmlpurifier/HTMLPurifier/Lexer/PH5P.php,
+	lib/htmlpurifier/HTMLPurifier/Strategy/Composite.php,
+	lib/htmlpurifier/HTMLPurifier/Strategy/RemoveForeignElements.php,
+	lib/htmlpurifier/HTMLPurifier/URIFilter/HostBlacklist.php,
+	lib/htmlpurifier/HTMLPurifier/URIFilter/Munge.php,
+	lib/htmlpurifier/HTMLPurifier/URIFilter/SafeIframe.php,
+	lib/htmlpurifier/HTMLPurifier/URIScheme/https.php,
+	lib/simpletest/testhtmlpurifier.php,
+	lib/simpletest/testpurifier.php, login/forgot_password_form.php,
+	mod/assignment/lib.php,
+	mod/assignment/type/upload/assignment.class.php,
+	mod/assignment/type/uploadsingle/assignment.class.php,
+	mod/data/edit.php, mod/data/lib.php, mod/data/preset.php,
+	mod/data/field/textarea/field.class.php,
+	mod/data/field/textarea/mod.html,
+	mod/data/field/textarea/lang/en/datafield_textarea.php,
+	question/format.php, question/import_form.php,
+	question/engine/datalib.php,
+	question/format/blackboard_six/format.php, tag/coursetagslib.php,
+	theme/formal_white/style/core.css,
+	theme/formal_white/style/course.css,
+	theme/formal_white/style/formal_white.css,
+	theme/formal_white/style/forum.css,
+	theme/formal_white/style/tabs.css, theme/sky_high/config.php,
+	theme/sky_high/layout/frontpage.php,
+	theme/sky_high/layout/general.php,
+	theme/sky_high/layout/report.php, theme/sky_high/style/core.css,
+	theme/sky_high/style/pagelayout.css,
+	theme/sky_high/style/report.css: 
+	
+	weekly cvs snapshot
+
+2012-03-09 Friday 20:11  moodlerobot
+
+	* mod/data/field/textarea/lang/en/datafield_textarea.php: 
+	
+	file datafield_textarea.php was added on branch MOODLE_21_STABLE on
+	2012-03-09 12:22:56 +0000
+
+2012-03-09 Friday 20:11  moodlerobot
+
+	* lib/htmlpurifier/HTMLPurifier/HTMLModule/TargetBlank.php: 
+	
+	file TargetBlank.php was added on branch MOODLE_21_STABLE on
+	2012-03-09 12:22:54 +0000
+
+2012-03-09 Friday 20:11  moodlerobot
+
+	*
+	lib/htmlpurifier/HTMLPurifier/ConfigSchema/schema/URI.SafeIframeReg
+	exp.txt: 
+	
+	file URI.SafeIframeRegexp.txt was added on branch MOODLE_21_STABLE
+	on 2012-03-09 12:22:53 +0000
+
+2012-03-09 Friday 20:11  moodlerobot
+
+	* lib/htmlpurifier/HTMLPurifier/URIFilter/SafeIframe.php: 
+	
+	file SafeIframe.php was added on branch MOODLE_21_STABLE on
+	2012-03-09 12:22:55 +0000
+
+2012-03-09 Friday 20:11  moodlerobot
+
+	* lib/htmlpurifier/HTMLPurifier/HTMLModule/Iframe.php: 
+	
+	file Iframe.php was added on branch MOODLE_22_STABLE on 2012-03-09
+	12:20:27 +0000
+
+2012-03-09 Friday 20:11  moodlerobot
+
+	* lib/htmlpurifier/HTMLPurifier/HTMLModule/TargetBlank.php: 
+	
+	file TargetBlank.php was added on branch MOODLE_22_STABLE on
+	2012-03-09 12:20:28 +0000
+
+2012-03-09 Friday 20:11  moodlerobot
+
+	* lib/htmlpurifier/HTMLPurifier/HTMLModule/Iframe.php: 
+	
+	file Iframe.php was added on branch MOODLE_21_STABLE on 2012-03-09
+	12:22:53 +0000
+
+2012-03-09 Friday 20:11  moodlerobot
+
+	*
+	lib/htmlpurifier/HTMLPurifier/ConfigSchema/schema/URI.SafeIframeReg
+	exp.txt: 
+	
+	file URI.SafeIframeRegexp.txt was added on branch MOODLE_22_STABLE
+	on 2012-03-09 12:20:27 +0000
+
+2012-03-09 Friday 20:11  moodlerobot
+
+	* lib/htmlpurifier/HTMLPurifier/URIFilter/SafeIframe.php: 
+	
+	file SafeIframe.php was added on branch MOODLE_22_STABLE on
+	2012-03-09 12:20:28 +0000
+
+2012-03-09 Friday 20:11  moodlerobot
+
+	*
+	lib/htmlpurifier/HTMLPurifier/ConfigSchema/schema/Core.EnableIDNA.t
+	xt: 
+	
+	file Core.EnableIDNA.txt was added on branch MOODLE_22_STABLE on
+	2012-03-09 12:20:26 +0000
+
+2012-03-09 Friday 20:11  moodlerobot
+
+	* lib/htmlpurifier/HTMLPurifier/ChildDef/List.php: 
+	
+	file List.php was added on branch MOODLE_22_STABLE on 2012-03-09
+	12:20:26 +0000
+
+2012-03-09 Friday 20:11  moodlerobot
+
+	*
+	lib/htmlpurifier/HTMLPurifier/ConfigSchema/schema/HTML.TargetBlank.
+	txt: 
+	
+	file HTML.TargetBlank.txt was added on branch MOODLE_21_STABLE on
+	2012-03-09 12:22:53 +0000
+
+2012-03-09 Friday 20:11  moodlerobot
+
+	* lib/htmlpurifier/HTMLPurifier/ChildDef/List.php: 
+	
+	file List.php was added on branch MOODLE_21_STABLE on 2012-03-09
+	12:22:52 +0000
+
+2012-03-09 Friday 20:11  moodlerobot
+
+	* lib/htmlpurifier/HTMLPurifier/AttrDef/CSS/Ident.php: 
+	
+	file Ident.php was added on branch MOODLE_21_STABLE on 2012-03-09
+	12:22:51 +0000
+
+2012-03-09 Friday 20:11  moodlerobot
+
+	*
+	lib/htmlpurifier/HTMLPurifier/ConfigSchema/schema/Core.EnableIDNA.t
+	xt: 
+	
+	file Core.EnableIDNA.txt was added on branch MOODLE_21_STABLE on
+	2012-03-09 12:22:52 +0000
+
+2012-03-09 Friday 20:11  moodlerobot
+
+	*
+	lib/htmlpurifier/HTMLPurifier/ConfigSchema/schema/HTML.TargetBlank.
+	txt: 
+	
+	file HTML.TargetBlank.txt was added on branch MOODLE_22_STABLE on
+	2012-03-09 12:20:27 +0000
+
+2012-03-09 Friday 20:11  moodlerobot
+
+	*
+	lib/htmlpurifier/HTMLPurifier/ConfigSchema/schema/HTML.SafeIframe.t
+	xt: 
+	
+	file HTML.SafeIframe.txt was added on branch MOODLE_21_STABLE on
+	2012-03-09 12:22:53 +0000
+
+2012-03-09 Friday 20:11  moodlerobot
+
+	* lib/htmlpurifier/HTMLPurifier/AttrTransform/TargetBlank.php: 
+	
+	file TargetBlank.php was added on branch MOODLE_21_STABLE on
+	2012-03-09 12:22:52 +0000
+
+2012-03-09 Friday 20:11  moodlerobot
+
+	* lib/htmlpurifier/HTMLPurifier/AttrTransform/TargetBlank.php: 
+	
+	file TargetBlank.php was added on branch MOODLE_22_STABLE on
+	2012-03-09 12:20:26 +0000
+
+2012-03-09 Friday 20:11  moodlerobot
+
+	*
+	lib/htmlpurifier/HTMLPurifier/ConfigSchema/schema/HTML.AllowedComme
+	ntsRegexp.txt: 
+	
+	file HTML.AllowedCommentsRegexp.txt was added on branch
+	MOODLE_22_STABLE on 2012-03-09 12:20:27 +0000
+
+2012-03-09 Friday 20:11  moodlerobot
+
+	*
+	lib/htmlpurifier/HTMLPurifier/ConfigSchema/schema/HTML.AllowedComme
+	ntsRegexp.txt: 
+	
+	file HTML.AllowedCommentsRegexp.txt was added on branch
+	MOODLE_21_STABLE on 2012-03-09 12:22:53 +0000
+
+2012-03-09 Friday 20:11  moodlerobot
+
+	* lib/htmlpurifier/HTMLPurifier/AttrDef/CSS/Ident.php: 
+	
+	file Ident.php was added on branch MOODLE_22_STABLE on 2012-03-09
+	12:20:25 +0000
+
+2012-03-09 Friday 20:11  moodlerobot
+
+	*
+	lib/htmlpurifier/HTMLPurifier/ConfigSchema/schema/HTML.SafeIframe.t
+	xt: 
+	
+	file HTML.SafeIframe.txt was added on branch MOODLE_22_STABLE on
+	2012-03-09 12:20:27 +0000
+
+2012-03-09 Friday 20:11  moodlerobot
+
+	*
+	lib/htmlpurifier/HTMLPurifier/ConfigSchema/schema/HTML.AllowedComme
+	nts.txt: 
+	
+	file HTML.AllowedComments.txt was added on branch MOODLE_22_STABLE
+	on 2012-03-09 12:20:26 +0000
+
+2012-03-09 Friday 20:11  moodlerobot
+
+	*
+	lib/htmlpurifier/HTMLPurifier/ConfigSchema/schema/HTML.AllowedComme
+	nts.txt: 
+	
+	file HTML.AllowedComments.txt was added on branch MOODLE_21_STABLE
+	on 2012-03-09 12:22:53 +0000
+
+2012-03-09 Friday 20:11  moodlerobot
+
+	* lib/htmlpurifier/HTMLPurifier/AttrDef/Clone.php: 
+	
+	file Clone.php was added on branch MOODLE_22_STABLE on 2012-03-09
+	12:20:25 +0000
+
+2012-03-09 Friday 20:11  moodlerobot
+
+	* lib/htmlpurifier/HTMLPurifier/AttrDef/Clone.php: 
+	
+	file Clone.php was added on branch MOODLE_21_STABLE on 2012-03-09
+	12:22:51 +0000
+
+2012-03-09 Friday 20:10  moodlerobot
+
+	* install/lang/ca_valencia/admin.php: 
+	
+	file admin.php was added on branch MOODLE_20_STABLE on 2012-03-09
+	12:24:26 +0000
+
+2012-03-09 Friday 20:10  moodlerobot
+
+	* install/lang/ca_valencia/admin.php: 
+	
+	file admin.php was added on branch MOODLE_22_STABLE on 2012-03-09
+	12:20:21 +0000
+
+2012-03-09 Friday 20:10  moodlerobot
+
+	* install/lang/ca_valencia/admin.php: 
+	
+	file admin.php was added on branch MOODLE_21_STABLE on 2012-03-09
+	12:22:47 +0000
+
+2012-03-09 Friday 20:09  moodlerobot
+
+	* githash.php, index.php, version.php, admin/environment.xml,
+	admin/index.php, admin/settings.php, admin/cli/upgrade.php,
+	admin/mnet/access_control.php, admin/roles/lib.php,
+	admin/settings/courses.php, admin/tool/customlang/db/install.xml,
+	admin/tool/uploaduser/locallib.php,
+	admin/tool/uploaduser/user_form.php,
+	admin/tool/xmldb/actions/check_bigints/check_bigints.class.php,
+	admin/tool/xmldb/actions/create_xml_file/create_xml_file.class.php,
+	admin/tool/xmldb/actions/edit_field/edit_field.class.php,
+	admin/tool/xmldb/actions/edit_field/edit_field.js,
+	admin/tool/xmldb/actions/edit_field_save/edit_field_save.class.php,
+	admin/tool/xmldb/actions/generate_documentation/xmldb.xsl,
+	admin/tool/xmldb/actions/new_table/new_table.class.php,
+	admin/tool/xmldb/actions/view_table_php/view_table_php.class.php,
+	admin/tool/xmldb/lang/en/tool_xmldb.php, auth/cas/auth.php,
+	auth/ldap/auth.php, backup/restorelib.php,
+	backup/converter/moodle1/handlerlib.php,
+	backup/converter/moodle1/lib.php,
+	backup/moodle2/backup_final_task.class.php,
+	backup/moodle2/backup_root_task.class.php,
+	backup/moodle2/backup_settingslib.php,
+	backup/moodle2/backup_stepslib.php,
+	backup/moodle2/restore_root_task.class.php,
+	backup/moodle2/restore_section_task.class.php,
+	backup/moodle2/restore_settingslib.php,
+	backup/moodle2/restore_stepslib.php,
+	backup/util/dbops/backup_controller_dbops.class.php,
+	backup/util/dbops/backup_plan_dbops.class.php,
+	backup/util/dbops/restore_dbops.class.php,
+	backup/util/helper/backup_cron_helper.class.php,
+	backup/util/ui/renderer.php,
+	backup/util/ui/restore_ui_components.php,
+	blocks/community/db/install.xml,
+	blocks/navigation/block_navigation.php,
+	blocks/rss_client/block_rss_client.php,
+	blocks/rss_client/db/install.xml, blog/lib.php, cohort/lib.php,
+	course/lib.php, course/rest.php, course/view.php,
+	course/format/topics/format.php, enrol/externallib.php,
+	enrol/authorize/db/install.xml, enrol/database/lib.php,
+	enrol/database/version.php, enrol/database/db/access.php,
+	enrol/database/lang/en/enrol_database.php,
+	enrol/flatfile/db/install.xml, enrol/guest/locallib.php,
+	enrol/ldap/lib.php, enrol/ldap/settingslib.php,
+	enrol/manual/db/services.php, enrol/paypal/db/install.xml,
+	enrol/self/locallib.php, grade/edit/scale/edit_form.php,
+	grade/grading/form/rubric/db/install.xml,
+	grade/import/grade_import_form.php, grade/import/csv/index.php,
+	grade/report/grader/lib.php, group/group_form.php,
+	group/grouping_form.php, install/lang/ca_valencia/admin.php,
+	install/lang/ca_valencia/langconfig.php,
+	install/lang/eu/install.php, install/lang/nl/install.php,
+	install/lang/pt/admin.php, install/lang/pt/error.php,
+	install/lang/pt/install.php, iplookup/lib.php, lang/en/admin.php,
+	lang/en/backup.php, lang/en/moodle.php, lib/adminlib.php,
+	lib/conditionlib.php, lib/csslib.php, lib/csvlib.class.php,
+	lib/datalib.php, lib/deprecatedlib.php, lib/excellib.class.php,
+	lib/filterlib.php, lib/formslib.php, lib/graphlib.php,
+	lib/html2text.php, lib/html2text_readme.txt,
+	lib/javascript-static.js, lib/javascript.php, lib/moodlelib.php,
+	lib/navigationlib.php, lib/outputrenderers.php,
+	lib/outputrequirementslib.php, lib/questionlib.php,
+	lib/sessionlib.php, lib/textlib.class.php, lib/thirdpartylibs.xml,
+	lib/tokeniserlib.php, lib/weblib.php,
+	lib/bennu/iCalendar_rfc2445.php, lib/bennu/readme_moodle.txt,
+	lib/db/install.xml, lib/db/log.php, lib/db/services.php,
+	lib/db/upgrade.php, lib/db/upgradelib.php,
+	lib/ddl/database_manager.php, lib/ddl/mssql_sql_generator.php,
+	lib/ddl/oracle_sql_generator.php,
+	lib/ddl/postgres_sql_generator.php, lib/ddl/sql_generator.php,
+	lib/ddl/sqlite_sql_generator.php, lib/ddl/simpletest/testddl.php,
+	lib/ddl/simpletest/fixtures/invalid.xml,
+	lib/ddl/simpletest/fixtures/xmldb_table.xml,
+	lib/dml/database_column_info.php, lib/dml/moodle_database.php,
+	lib/dml/mssql_native_moodle_database.php,
+	lib/dml/mysqli_native_moodle_database.php,
+	lib/dml/oci_native_moodle_database.php,
+	lib/dml/pdo_moodle_database.php,
+	lib/dml/pgsql_native_moodle_database.php,
+	lib/dml/sqlsrv_native_moodle_database.php,
+	lib/editor/tinymce/lib.php, lib/editor/tinymce/readme_moodle.txt,
+	lib/editor/tinymce/version.php,
+	lib/editor/tinymce/tiny_mce/3.4.6/jquery.tinymce.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/license.txt,
+	lib/editor/tinymce/tiny_mce/3.4.6/tiny_mce.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/tiny_mce_dev.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/tiny_mce_jquery.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/tiny_mce_jquery_src.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/tiny_mce_popup.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/tiny_mce_popup_src.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/tiny_mce_prototype.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/tiny_mce_prototype_src.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/tiny_mce_src.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/langs/en.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/advhr/editor_plugin.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/advhr/editor_plugin_src.j
+	s, lib/editor/tinymce/tiny_mce/3.4.6/plugins/advhr/rule.htm,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/advhr/css/advhr.css,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/advhr/js/rule.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/advhr/langs/en_dlg.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/advimage/editor_plugin.js
+	,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/advimage/editor_plugin_sr
+	c.js, lib/editor/tinymce/tiny_mce/3.4.6/plugins/advimage/image.htm,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/advimage/css/advimage.css
+	,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/advimage/img/sample.gif,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/advimage/js/image.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/advimage/langs/en_dlg.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/advlink/editor_plugin.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/advlink/editor_plugin_src
+	.js, lib/editor/tinymce/tiny_mce/3.4.6/plugins/advlink/link.htm,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/advlink/css/advlink.css,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/advlink/js/advlink.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/advlink/langs/en_dlg.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/advlist/editor_plugin.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/advlist/editor_plugin_src
+	.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/autolink/editor_plugin.js
+	,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/autolink/editor_plugin_sr
+	c.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/autoresize/editor_plugin.
+	js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/autoresize/editor_plugin_
+	src.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/autosave/editor_plugin.js
+	,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/autosave/editor_plugin_sr
+	c.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/autosave/langs/en.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/bbcode/editor_plugin.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/bbcode/editor_plugin_src.
+	js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/contextmenu/editor_plugin
+	.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/contextmenu/editor_plugin
+	_src.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/directionality/editor_plu
+	gin.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/directionality/editor_plu
+	gin_src.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/dragmath/dragmath.php,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/dragmath/editor_plugin.js
+	,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/dragmath/editor_plugin_sr
+	c.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/dragmath/img/dragmath.gif
+	,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/dragmath/js/dragmath.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/dragmath/langs/en_dlg.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/emotions/editor_plugin.js
+	,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/emotions/editor_plugin_sr
+	c.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/emotions/emotions.htm,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/emotions/img/smiley-cool.
+	gif,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/emotions/img/smiley-cry.g
+	if,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/emotions/img/smiley-embar
+	assed.gif,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/emotions/img/smiley-foot-
+	in-mouth.gif,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/emotions/img/smiley-frown
+	.gif,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/emotions/img/smiley-innoc
+	ent.gif,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/emotions/img/smiley-kiss.
+	gif,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/emotions/img/smiley-laugh
+	ing.gif,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/emotions/img/smiley-money
+	-mouth.gif,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/emotions/img/smiley-seale
+	d.gif,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/emotions/img/smiley-smile
+	.gif,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/emotions/img/smiley-surpr
+	ised.gif,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/emotions/img/smiley-tongu
+	e-out.gif,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/emotions/img/smiley-undec
+	ided.gif,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/emotions/img/smiley-wink.
+	gif,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/emotions/img/smiley-yell.
+	gif,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/emotions/js/emotions.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/emotions/langs/en_dlg.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/example/dialog.htm,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/example/editor_plugin.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/example/editor_plugin_src
+	.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/example/img/example.gif,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/example/js/dialog.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/example/langs/en.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/example/langs/en_dlg.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/example_dependency/editor
+	_plugin.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/example_dependency/editor
+	_plugin_src.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/fullpage/editor_plugin.js
+	,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/fullpage/editor_plugin_sr
+	c.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/fullpage/fullpage.htm,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/fullpage/css/fullpage.css
+	,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/fullpage/js/fullpage.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/fullpage/langs/en_dlg.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/fullscreen/editor_plugin.
+	js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/fullscreen/editor_plugin_
+	src.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/fullscreen/fullscreen.htm
+	,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/iespell/editor_plugin.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/iespell/editor_plugin_src
+	.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/inlinepopups/editor_plugi
+	n.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/inlinepopups/editor_plugi
+	n_src.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/inlinepopups/template.htm
+	,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/inlinepopups/skins/clearl
+	ooks2/window.css,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/inlinepopups/skins/clearl
+	ooks2/img/alert.gif,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/inlinepopups/skins/clearl
+	ooks2/img/button.gif,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/inlinepopups/skins/clearl
+	ooks2/img/buttons.gif,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/inlinepopups/skins/clearl
+	ooks2/img/confirm.gif,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/inlinepopups/skins/clearl
+	ooks2/img/corners.gif,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/inlinepopups/skins/clearl
+	ooks2/img/horizontal.gif,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/inlinepopups/skins/clearl
+	ooks2/img/vertical.gif,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/insertdatetime/editor_plu
+	gin.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/insertdatetime/editor_plu
+	gin_src.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/layer/editor_plugin.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/layer/editor_plugin_src.j
+	s,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/legacyoutput/editor_plugi
+	n.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/legacyoutput/editor_plugi
+	n_src.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/lists/editor_plugin.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/lists/editor_plugin_src.j
+	s,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/media/editor_plugin.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/media/editor_plugin_src.j
+	s, lib/editor/tinymce/tiny_mce/3.4.6/plugins/media/media.htm,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/media/moxieplayer.swf,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/media/css/media.css,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/media/js/embed.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/media/js/media.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/media/langs/en_dlg.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/moodleemoticon/dialog.php
+	,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/moodleemoticon/editor_plu
+	gin.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/moodleemoticon/editor_plu
+	gin_src.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/moodleemoticon/img/moodle
+	emoticon.gif,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/moodleemoticon/js/dialog.
+	js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/moodlemedia/editor_plugin
+	.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/moodlemedia/editor_plugin
+	_src.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/moodlemedia/moodlemedia.h
+	tm,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/moodlemedia/css/media.css
+	,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/moodlemedia/img/icon.gif,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/moodlemedia/js/media.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/moodlenolink/editor_plugi
+	n.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/moodlenolink/editor_plugi
+	n_src.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/moodlenolink/img/ed_nolin
+	k.gif,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/moodlenolink/langs/en.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/nonbreaking/editor_plugin
+	.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/nonbreaking/editor_plugin
+	_src.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/noneditable/editor_plugin
+	.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/noneditable/editor_plugin
+	_src.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/pagebreak/editor_plugin.j
+	s,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/pagebreak/editor_plugin_s
+	rc.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/paste/editor_plugin.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/paste/editor_plugin_src.j
+	s, lib/editor/tinymce/tiny_mce/3.4.6/plugins/paste/pastetext.htm,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/paste/pasteword.htm,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/paste/js/pastetext.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/paste/js/pasteword.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/paste/langs/en_dlg.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/preview/editor_plugin.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/preview/editor_plugin_src
+	.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/preview/example.html,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/preview/preview.html,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/preview/jscripts/embed.js
+	, lib/editor/tinymce/tiny_mce/3.4.6/plugins/print/editor_plugin.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/print/editor_plugin_src.j
+	s, lib/editor/tinymce/tiny_mce/3.4.6/plugins/save/editor_plugin.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/save/editor_plugin_src.js
+	,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/searchreplace/editor_plug
+	in.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/searchreplace/editor_plug
+	in_src.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/searchreplace/searchrepla
+	ce.htm,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/searchreplace/css/searchr
+	eplace.css,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/searchreplace/js/searchre
+	place.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/searchreplace/langs/en_dl
+	g.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/spellchecker/changelog.tx
+	t,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/spellchecker/config.php,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/spellchecker/editor_plugi
+	n.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/spellchecker/editor_plugi
+	n_src.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/spellchecker/rpc.php,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/spellchecker/classes/Ench
+	antSpell.php,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/spellchecker/classes/Goog
+	leSpell.php,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/spellchecker/classes/PSpe
+	ll.php,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/spellchecker/classes/PSpe
+	llShell.php,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/spellchecker/classes/Spel
+	lChecker.php,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/spellchecker/classes/util
+	s/JSON.php,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/spellchecker/classes/util
+	s/Logger.php,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/spellchecker/css/content.
+	css,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/spellchecker/img/wline.gi
+	f,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/spellchecker/includes/gen
+	eral.php,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/style/editor_plugin.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/style/editor_plugin_src.j
+	s, lib/editor/tinymce/tiny_mce/3.4.6/plugins/style/props.htm,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/style/css/props.css,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/style/js/props.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/style/langs/en_dlg.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/tabfocus/editor_plugin.js
+	,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/tabfocus/editor_plugin_sr
+	c.js, lib/editor/tinymce/tiny_mce/3.4.6/plugins/table/cell.htm,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/table/editor_plugin.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/table/editor_plugin_src.j
+	s, lib/editor/tinymce/tiny_mce/3.4.6/plugins/table/merge_cells.htm,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/table/row.htm,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/table/table.htm,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/table/css/cell.css,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/table/css/row.css,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/table/css/table.css,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/table/js/cell.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/table/js/merge_cells.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/table/js/row.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/table/js/table.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/table/langs/en_dlg.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/template/blank.htm,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/template/editor_plugin.js
+	,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/template/editor_plugin_sr
+	c.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/template/template.htm,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/template/css/template.css
+	,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/template/js/template.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/template/langs/en_dlg.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/visualchars/editor_plugin
+	.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/visualchars/editor_plugin
+	_src.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/wordcount/editor_plugin.j
+	s,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/wordcount/editor_plugin_s
+	rc.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/xhtmlxtras/abbr.htm,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/xhtmlxtras/acronym.htm,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/xhtmlxtras/attributes.htm
+	, lib/editor/tinymce/tiny_mce/3.4.6/plugins/xhtmlxtras/cite.htm,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/xhtmlxtras/del.htm,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/xhtmlxtras/editor_plugin.
+	js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/xhtmlxtras/editor_plugin_
+	src.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/xhtmlxtras/ins.htm,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/xhtmlxtras/css/attributes
+	.css,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/xhtmlxtras/css/popup.css,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/xhtmlxtras/js/abbr.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/xhtmlxtras/js/acronym.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/xhtmlxtras/js/attributes.
+	js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/xhtmlxtras/js/cite.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/xhtmlxtras/js/del.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/xhtmlxtras/js/element_com
+	mon.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/xhtmlxtras/js/ins.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/plugins/xhtmlxtras/langs/en_dlg.j
+	s, lib/editor/tinymce/tiny_mce/3.4.6/themes/advanced/about.htm,
+	lib/editor/tinymce/tiny_mce/3.4.6/themes/advanced/anchor.htm,
+	lib/editor/tinymce/tiny_mce/3.4.6/themes/advanced/charmap.htm,
+	lib/editor/tinymce/tiny_mce/3.4.6/themes/advanced/color_picker.htm,
+	lib/editor/tinymce/tiny_mce/3.4.6/themes/advanced/editor_template.j
+	s,
+	lib/editor/tinymce/tiny_mce/3.4.6/themes/advanced/editor_template_s
+	rc.js, lib/editor/tinymce/tiny_mce/3.4.6/themes/advanced/image.htm,
+	lib/editor/tinymce/tiny_mce/3.4.6/themes/advanced/link.htm,
+	lib/editor/tinymce/tiny_mce/3.4.6/themes/advanced/shortcuts.htm,
+	lib/editor/tinymce/tiny_mce/3.4.6/themes/advanced/source_editor.htm
+	,
+	lib/editor/tinymce/tiny_mce/3.4.6/themes/advanced/img/colorpicker.j
+	pg,
+	lib/editor/tinymce/tiny_mce/3.4.6/themes/advanced/img/flash.gif,
+	lib/editor/tinymce/tiny_mce/3.4.6/themes/advanced/img/icons.gif,
+	lib/editor/tinymce/tiny_mce/3.4.6/themes/advanced/img/iframe.gif,
+	lib/editor/tinymce/tiny_mce/3.4.6/themes/advanced/img/pagebreak.gif
+	,
+	lib/editor/tinymce/tiny_mce/3.4.6/themes/advanced/img/quicktime.gif
+	,
+	lib/editor/tinymce/tiny_mce/3.4.6/themes/advanced/img/realmedia.gif
+	,
+	lib/editor/tinymce/tiny_mce/3.4.6/themes/advanced/img/shockwave.gif
+	, lib/editor/tinymce/tiny_mce/3.4.6/themes/advanced/img/trans.gif,
+	lib/editor/tinymce/tiny_mce/3.4.6/themes/advanced/img/video.gif,
+	lib/editor/tinymce/tiny_mce/3.4.6/themes/advanced/img/windowsmedia.
+	gif, lib/editor/tinymce/tiny_mce/3.4.6/themes/advanced/js/about.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/themes/advanced/js/anchor.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/themes/advanced/js/charmap.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/themes/advanced/js/color_picker.j
+	s, lib/editor/tinymce/tiny_mce/3.4.6/themes/advanced/js/image.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/themes/advanced/js/link.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/themes/advanced/js/source_editor.
+	js, lib/editor/tinymce/tiny_mce/3.4.6/themes/advanced/langs/en.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/themes/advanced/langs/en_dlg.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/themes/advanced/skins/default/con
+	tent.css,
+	lib/editor/tinymce/tiny_mce/3.4.6/themes/advanced/skins/default/dia
+	log.css,
+	lib/editor/tinymce/tiny_mce/3.4.6/themes/advanced/skins/default/ui.
+	css,
+	lib/editor/tinymce/tiny_mce/3.4.6/themes/advanced/skins/default/img
+	/buttons.png,
+	lib/editor/tinymce/tiny_mce/3.4.6/themes/advanced/skins/default/img
+	/items.gif,
+	lib/editor/tinymce/tiny_mce/3.4.6/themes/advanced/skins/default/img
+	/menu_arrow.gif,
+	lib/editor/tinymce/tiny_mce/3.4.6/themes/advanced/skins/default/img
+	/menu_check.gif,
+	lib/editor/tinymce/tiny_mce/3.4.6/themes/advanced/skins/default/img
+	/progress.gif,
+	lib/editor/tinymce/tiny_mce/3.4.6/themes/advanced/skins/default/img
+	/tabs.gif,
+	lib/editor/tinymce/tiny_mce/3.4.6/themes/advanced/skins/highcontras
+	t/content.css,
+	lib/editor/tinymce/tiny_mce/3.4.6/themes/advanced/skins/highcontras
+	t/dialog.css,
+	lib/editor/tinymce/tiny_mce/3.4.6/themes/advanced/skins/highcontras
+	t/ui.css,
+	lib/editor/tinymce/tiny_mce/3.4.6/themes/advanced/skins/o2k7/conten
+	t.css,
+	lib/editor/tinymce/tiny_mce/3.4.6/themes/advanced/skins/o2k7/dialog
+	.css,
+	lib/editor/tinymce/tiny_mce/3.4.6/themes/advanced/skins/o2k7/ui.css
+	,
+	lib/editor/tinymce/tiny_mce/3.4.6/themes/advanced/skins/o2k7/ui_bla
+	ck.css,
+	lib/editor/tinymce/tiny_mce/3.4.6/themes/advanced/skins/o2k7/ui_sil
+	ver.css,
+	lib/editor/tinymce/tiny_mce/3.4.6/themes/advanced/skins/o2k7/img/bu
+	tton_bg.png,
+	lib/editor/tinymce/tiny_mce/3.4.6/themes/advanced/skins/o2k7/img/bu
+	tton_bg_black.png,
+	lib/editor/tinymce/tiny_mce/3.4.6/themes/advanced/skins/o2k7/img/bu
+	tton_bg_silver.png,
+	lib/editor/tinymce/tiny_mce/3.4.6/themes/simple/editor_template.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/themes/simple/editor_template_src
+	.js, lib/editor/tinymce/tiny_mce/3.4.6/themes/simple/img/icons.gif,
+	lib/editor/tinymce/tiny_mce/3.4.6/themes/simple/langs/en.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/themes/simple/skins/default/conte
+	nt.css,
+	lib/editor/tinymce/tiny_mce/3.4.6/themes/simple/skins/default/ui.cs
+	s,
+	lib/editor/tinymce/tiny_mce/3.4.6/themes/simple/skins/o2k7/content.
+	css,
+	lib/editor/tinymce/tiny_mce/3.4.6/themes/simple/skins/o2k7/ui.css,
+	lib/editor/tinymce/tiny_mce/3.4.6/themes/simple/skins/o2k7/img/butt
+	on_bg.png,
+	lib/editor/tinymce/tiny_mce/3.4.6/utils/editable_selects.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/utils/form_utils.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/utils/mctabs.js,
+	lib/editor/tinymce/tiny_mce/3.4.6/utils/validate.js,
+	lib/filestorage/file_archive.php, lib/filestorage/file_storage.php,
+	lib/form/dndupload.js, lib/form/filemanager.js,
+	lib/form/filemanager.php, lib/htmlpurifier/HTMLPurifier.php,
+	lib/htmlpurifier/HTMLPurifier.safe-includes.php,
+	lib/htmlpurifier/readme_moodle.txt,
+	lib/htmlpurifier/HTMLPurifier/AttrTypes.php,
+	lib/htmlpurifier/HTMLPurifier/Config.php,
+	lib/htmlpurifier/HTMLPurifier/Encoder.php,
+	lib/htmlpurifier/HTMLPurifier/HTMLDefinition.php,
+	lib/htmlpurifier/HTMLPurifier/HTMLModuleManager.php,
+	lib/htmlpurifier/HTMLPurifier/URI.php,
+	lib/htmlpurifier/HTMLPurifier/URIDefinition.php,
+	lib/htmlpurifier/HTMLPurifier/URIFilter.php,
+	lib/htmlpurifier/HTMLPurifier/URIScheme.php,
+	lib/htmlpurifier/HTMLPurifier/AttrDef/Clone.php,
+	lib/htmlpurifier/HTMLPurifier/AttrDef/URI.php,
+	lib/htmlpurifier/HTMLPurifier/AttrDef/CSS/Ident.php,
+	lib/htmlpurifier/HTMLPurifier/AttrDef/HTML/Color.php,
+	lib/htmlpurifier/HTMLPurifier/AttrDef/HTML/ID.php,
+	lib/htmlpurifier/HTMLPurifier/AttrDef/URI/Host.php,
+	lib/htmlpurifier/HTMLPurifier/AttrTransform/Nofollow.php,
+	lib/htmlpurifier/HTMLPurifier/AttrTransform/TargetBlank.php,
+	lib/htmlpurifier/HTMLPurifier/ChildDef/List.php,
+	lib/htmlpurifier/HTMLPurifier/ChildDef/Table.php,
+	lib/htmlpurifier/HTMLPurifier/ConfigSchema/schema.ser,
+	lib/htmlpurifier/HTMLPurifier/ConfigSchema/schema/Core.ColorKeyword
+	s.txt,
+	lib/htmlpurifier/HTMLPurifier/ConfigSchema/schema/Core.EnableIDNA.t
+	xt,
+	lib/htmlpurifier/HTMLPurifier/ConfigSchema/schema/HTML.AllowedComme
+	nts.txt,
+	lib/htmlpurifier/HTMLPurifier/ConfigSchema/schema/HTML.AllowedComme
+	ntsRegexp.txt,
+	lib/htmlpurifier/HTMLPurifier/ConfigSchema/schema/HTML.SafeIframe.t
+	xt,
+	lib/htmlpurifier/HTMLPurifier/ConfigSchema/schema/HTML.TargetBlank.
+	txt,
+	lib/htmlpurifier/HTMLPurifier/ConfigSchema/schema/URI.SafeIframeReg
+	exp.txt,
+	lib/htmlpurifier/HTMLPurifier/Filter/ExtractStyleBlocks.php,
+	lib/htmlpurifier/HTMLPurifier/HTMLModule/Forms.php,
+	lib/htmlpurifier/HTMLPurifier/HTMLModule/Iframe.php,
+	lib/htmlpurifier/HTMLPurifier/HTMLModule/Legacy.php,
+	lib/htmlpurifier/HTMLPurifier/HTMLModule/List.php,
+	lib/htmlpurifier/HTMLPurifier/HTMLModule/Tables.php,
+	lib/htmlpurifier/HTMLPurifier/HTMLModule/TargetBlank.php,
+	lib/htmlpurifier/HTMLPurifier/Lexer/PEARSax3.php,
+	lib/htmlpurifier/HTMLPurifier/Lexer/PH5P.php,
+	lib/htmlpurifier/HTMLPurifier/Strategy/Composite.php,
+	lib/htmlpurifier/HTMLPurifier/Strategy/RemoveForeignElements.php,
+	lib/htmlpurifier/HTMLPurifier/URIFilter/HostBlacklist.php,
+	lib/htmlpurifier/HTMLPurifier/URIFilter/Munge.php,
+	lib/htmlpurifier/HTMLPurifier/URIFilter/SafeIframe.php,
+	lib/htmlpurifier/HTMLPurifier/URIScheme/https.php,
+	lib/phpmailer/moodle_phpmailer.php,
+	lib/simpletest/testhtmlpurifier.php,
+	lib/simpletest/testmoodlelib.php, lib/simpletest/testpurifier.php,
+	lib/simpletest/testtextlib.php, lib/simpletest/testweblib.php,
+	lib/xmldb/xmldb.xsd, lib/xmldb/xmldb_constants.php,
+	lib/xmldb/xmldb_field.php, login/forgot_password.php,
+	login/forgot_password_form.php, login/index.php,
+	login/signup_form.php, login/token.php, message/lib.php,
+	mnet/service/enrol/db/install.xml, mod/assignment/lib.php,
+	mod/assignment/db/install.xml,
+	mod/assignment/type/upload/assignment.class.php,
+	mod/assignment/type/uploadsingle/assignment.class.php,
+	mod/chat/db/install.xml, mod/choice/db/install.xml,
+	mod/data/edit.php, mod/data/import_form.php, mod/data/lib.php,
+	mod/data/preset.php, mod/data/view.php, mod/data/db/install.xml,
+	mod/data/field/textarea/field.class.php,
+	mod/data/field/textarea/mod.html,
+	mod/data/field/textarea/lang/en/datafield_textarea.php,
+	mod/feedback/import.php, mod/feedback/db/install.xml,
+	mod/folder/db/install.xml, mod/forum/db/install.xml,
+	mod/glossary/edit_form.php, mod/glossary/editcategories.php,
+	mod/glossary/exportentry.php, mod/glossary/import.php,
+	mod/glossary/lib.php, mod/glossary/print.php, mod/glossary/sql.php,
+	mod/glossary/view.php, mod/glossary/db/install.xml,
+	mod/imscp/db/install.xml, mod/label/lib.php,
+	mod/label/db/install.xml, mod/lesson/db/install.xml,
+	mod/lti/locallib.php, mod/lti/db/install.xml,
+	mod/page/db/install.xml, mod/quiz/db/install.xml,
+	mod/quiz/report/overview/db/install.xml,
+	mod/quiz/report/statistics/db/install.xml,
+	mod/resource/db/install.xml, mod/scorm/styles.css,
+	mod/scorm/db/install.xml, mod/survey/db/install.xml,
+	mod/url/db/install.xml, mod/wiki/db/install.xml,
+	mod/workshop/db/install.xml, mod/workshop/eval/best/db/install.xml,
+	mod/workshop/form/accumulative/db/install.xml,
+	mod/workshop/form/comments/db/install.xml,
+	mod/workshop/form/numerrors/db/install.xml,
+	mod/workshop/form/rubric/db/install.xml,
+	portfolio/mahara/db/install.xml, question/format.php,
+	question/import_form.php, question/engine/datalib.php,
+	question/format/blackboard_six/format.php,
+	question/type/calculated/db/install.xml,
+	question/type/essay/db/install.xml,
+	question/type/match/db/install.xml,
+	question/type/multianswer/db/install.xml,
+	question/type/multichoice/db/install.xml,
+	question/type/numerical/db/install.xml,
+	question/type/randomsamatch/db/install.xml,
+	question/type/shortanswer/db/install.xml,
+	question/type/truefalse/db/install.xml, rating/index.php,
+	rating/lib.php, rating/rate.php, rating/rate_ajax.php,
+	report/completion/index.php, report/progress/index.php,
+	tag/coursetagslib.php, tag/lib.php, tag/locallib.php,
+	theme/javascript.php, theme/formal_white/layout/general.php,
+	theme/formal_white/style/core.css,
+	theme/formal_white/style/course.css,
+	theme/formal_white/style/formal_white.css,
+	theme/formal_white/style/forum.css,
+	theme/formal_white/style/tabs.css, theme/sky_high/config.php,
+	theme/sky_high/layout/frontpage.php,
+	theme/sky_high/layout/general.php,
+	theme/sky_high/layout/report.php, theme/sky_high/style/core.css,
+	theme/sky_high/style/pagelayout.css,
+	theme/sky_high/style/report.css, theme/splash/style/pagelayout.css,
+	user/editadvanced_form.php, webservice/externallib.php,
+	webservice/lib.php, webservice/pluginfile.php,
+	webservice/renderer.php, webservice/upload.php,
+	webservice/wsdoc.php, webservice/amf/introspector.php,
+	webservice/amf/locallib.php, webservice/amf/server.php,
+	webservice/amf/simpleserver.php, webservice/amf/version.php,
+	webservice/amf/db/access.php,
+	webservice/amf/lang/en/webservice_amf.php,
+	webservice/amf/testclient/index.php, webservice/rest/lib.php,
+	webservice/rest/locallib.php, webservice/rest/server.php,
+	webservice/rest/simpleserver.php, webservice/rest/version.php,
+	webservice/rest/db/access.php,
+	webservice/rest/lang/en/webservice_rest.php,
+	webservice/simpletest/testwebservice.php, webservice/soap/lib.php,
+	webservice/soap/locallib.php, webservice/soap/server.php,
+	webservice/soap/simpleserver.php, webservice/soap/version.php,
+	webservice/soap/db/access.php,
+	webservice/soap/lang/en/webservice_soap.php,
+	webservice/xmlrpc/lib.php, webservice/xmlrpc/locallib.php,
+	webservice/xmlrpc/server.php, webservice/xmlrpc/simpleserver.php,
+	webservice/xmlrpc/version.php, webservice/xmlrpc/db/access.php,
+	webservice/xmlrpc/lang/en/webservice_xmlrpc.php: 
+	
+	weekly cvs snapshot
+
+2012-03-01 Thursday 19:22  moodlerobot
+
+	* install/lang/vi/error.php: 
+	
+	file error.php was initially added on branch MOODLE_21_STABLE.
+
+2012-03-01 Thursday 19:22  moodlerobot
+
+	* githash.php, version.php, blocks/dock.js,
+	blocks/community/communitycourse.php,
+	blocks/community/locallib.php, blocks/community/renderer.php,
+	blocks/community/yui/imagegallery/imagegallery.js,
+	blocks/navigation/block_navigation.php,
+	blocks/navigation/renderer.php, blocks/navigation/db/upgrade.php,
+	blocks/participants/block_participants.php,
+	blocks/section_links/config_instance.html, calendar/delete.php,
+	calendar/event.php, calendar/lib.php, course/completion.php,
+	course/info.php, course/modedit.php, course/publish/forms.php,
+	course/publish/index.php, course/publish/lib.php,
+	course/publish/metadata.php, course/publish/renderer.php,
+	enrol/locallib.php, enrol/cohort/ajax.php,
+	filter/algebra/AlgParser.pm, grade/edit/scale/edit_form.php,
+	grade/report/overview/renderer.php,
+	install/lang/ca_valencia/langconfig.php,
+	install/lang/en_ar/langconfig.php, install/lang/hr/install.php,
+	install/lang/kl/langconfig.php, install/lang/vi/error.php,
+	lang/en/question.php, lib/html2text.php, lib/moodlelib.php,
+	lib/weblib.php, lib/dml/oci_native_moodle_database.php,
+	lib/form/filemanager.php, lib/simpletest/testweblib.php,
+	mod/data/lib.php, mod/glossary/lib.php, mod/lesson/styles.css,
+	mod/lesson/pagetypes/multichoice.php,
+	mod/page/backup/moodle1/lib.php, mod/wiki/locallib.php,
+	question/type/edit_question_form.php,
+	question/type/questiontypebase.php,
+	question/type/calculated/questiontype.php,
+	question/type/calculatedmulti/questiontype.php,
+	question/type/match/questiontype.php,
+	question/type/multianswer/questiontype.php,
+	question/type/multichoice/questiontype.php,
+	question/type/numerical/questiontype.php,
+	question/type/shortanswer/questiontype.php,
+	theme/afterburner/style/afterburner_layout.css,
+	theme/afterburner/style/afterburner_styles.css,
+	theme/anomaly/style/base.css, theme/anomaly/style/general.css,
+	theme/base/style/core.css, theme/base/style/message.css,
+	theme/canvas/style/core.css, theme/formal_white/style/core.css,
+	user/editadvanced.php, user/externallib.php, user/lib.php,
+	githash.php, version.php, install/lang/ca_valencia/langconfig.php,
+	install/lang/en_ar/langconfig.php, install/lang/hr/install.php,
+	install/lang/kl/langconfig.php, user/lib.php, githash.php,
+	version.php: 
+	
+	weekly cvs snapshot
+
+2012-03-01 Thursday 19:15  moodlerobot
+
+	* install/lang/: ca_valencia/langconfig.php, en_ar/langconfig.php,
+	kl/langconfig.php: 
+	
+	file langconfig.php was added on branch MOODLE_21_STABLE on
+	2012-03-01 11:22:35 +0000
+
+2012-03-01 Thursday 19:15  moodlerobot
+
+	* install/lang/: ca_valencia/langconfig.php, en_ar/langconfig.php,
+	kl/langconfig.php: 
+	
+	file langconfig.php was added on branch MOODLE_22_STABLE on
+	2012-03-01 11:16:40 +0000
+
+2012-03-01 Thursday 19:15  moodlerobot
+
+	* install/lang/: ca_valencia/langconfig.php, en_ar/langconfig.php: 
+	
+	file langconfig.php was added on branch MOODLE_20_STABLE on
+	2012-03-01 11:23:44 +0000
+
+2012-03-01 Thursday 19:15  moodlerobot
+
+	* install/lang/kl/langconfig.php: 
+	
+	file langconfig.php was added on branch MOODLE_20_STABLE on
+	2012-03-01 11:23:45 +0000
+
+2012-03-01 Thursday 19:15  moodlerobot
+
+	* githash.php, version.php, admin/tool/customlang/db/access.php,
+	admin/tool/unittest/db/access.php,
+	backup/moodle2/backup_activity_task.class.php,
+	backup/moodle2/backup_block_task.class.php,
+	backup/moodle2/backup_course_task.class.php,
+	backup/moodle2/backup_coursereport_plugin.class.php,
+	backup/moodle2/backup_custom_fields.php,
+	backup/moodle2/backup_default_block_task.class.php,
+	backup/moodle2/backup_final_task.class.php,
+	backup/moodle2/backup_format_plugin.class.php,
+	backup/moodle2/backup_gradingform_plugin.class.php,
+	backup/moodle2/backup_plagiarism_plugin.class.php,
+	backup/moodle2/backup_plan_builder.class.php,
+	backup/moodle2/backup_plugin.class.php,
+	backup/moodle2/backup_qtype_plugin.class.php,
+	backup/moodle2/backup_report_plugin.class.php,
+	backup/moodle2/backup_root_task.class.php,
+	backup/moodle2/backup_section_task.class.php,
+	backup/moodle2/backup_settingslib.php,
+	backup/moodle2/backup_stepslib.php,
+	backup/moodle2/backup_subplugin.class.php,
+	backup/moodle2/backup_theme_plugin.class.php,
+	backup/moodle2/backup_xml_transformer.class.php,
+	backup/moodle2/restore_activity_task.class.php,
+	backup/moodle2/restore_block_task.class.php,
+	backup/moodle2/restore_course_task.class.php,
+	backup/moodle2/restore_coursereport_plugin.class.php,
+	backup/moodle2/restore_default_block_task.class.php,
+	backup/moodle2/restore_final_task.class.php,
+	backup/moodle2/restore_format_plugin.class.php,
+	backup/moodle2/restore_gradingform_plugin.class.php,
+	backup/moodle2/restore_plagiarism_plugin.class.php,
+	backup/moodle2/restore_plan_builder.class.php,
+	backup/moodle2/restore_plugin.class.php,
+	backup/moodle2/restore_qtype_plugin.class.php,
+	backup/moodle2/restore_report_plugin.class.php,
+	backup/moodle2/restore_root_task.class.php,
+	backup/moodle2/restore_section_task.class.php,
+	backup/moodle2/restore_settingslib.php,
+	backup/moodle2/restore_stepslib.php,
+	backup/moodle2/restore_subplugin.class.php,
+	backup/moodle2/restore_theme_plugin.class.php,
+	backup/util/settings/backup_setting.class.php,
+	backup/util/settings/base_setting.class.php,
+	backup/util/settings/root/root_backup_setting.class.php,
+	blocks/dock.js, blocks/community/communitycourse.php,
+	blocks/community/locallib.php, blocks/community/renderer.php,
+	blocks/community/yui/imagegallery/imagegallery.js,
+	blocks/completionstatus/block_completionstatus.php,
+	blocks/completionstatus/lang/en/block_completionstatus.php,
+	blocks/course_list/block_course_list.php,
+	blocks/course_list/lang/en/block_course_list.php,
+	blocks/html/lib.php, blocks/navigation/block_navigation.php,
+	blocks/navigation/edit_form.php, blocks/navigation/renderer.php,
+	blocks/navigation/version.php, blocks/online_users/db/access.php,
+	blocks/participants/block_participants.php,
+	blocks/private_files/block_private_files.php,
+	blocks/private_files/lang/en/block_private_files.php,
+	blocks/rss_client/block_rss_client.php,
+	blocks/rss_client/editfeed.php, blocks/rss_client/managefeeds.php,
+	blocks/rss_client/viewfeed.php, blocks/rss_client/db/access.php,
+	blocks/rss_client/lang/en/block_rss_client.php,
+	blocks/section_links/config_instance.html,
+	blocks/selfcompletion/block_selfcompletion.php,
+	blocks/selfcompletion/lang/en/block_selfcompletion.php,
+	calendar/delete.php, calendar/event.php, calendar/lib.php,
+	course/completion.php, course/info.php, course/publish/forms.php,
+	course/publish/index.php, course/publish/lib.php,
+	course/publish/metadata.php, course/publish/renderer.php,
+	enrol/locallib.php, enrol/authorize/db/access.php,
+	enrol/category/db/access.php, enrol/category/db/events.php,
+	enrol/cohort/ajax.php, enrol/cohort/db/access.php,
+	enrol/cohort/db/events.php, enrol/guest/db/access.php,
+	enrol/ldap/db/access.php, enrol/manual/db/access.php,
+	enrol/meta/db/access.php, enrol/meta/db/events.php,
+	enrol/paypal/db/access.php, enrol/self/db/access.php,
+	filter/algebra/AlgParser.pm, grade/edit/scale/edit_form.php,
+	grade/export/ods/db/access.php, grade/export/txt/db/access.php,
+	grade/export/xls/db/access.php, grade/export/xml/db/access.php,
+	grade/import/csv/db/access.php, grade/import/xml/db/access.php,
+	grade/report/grader/db/access.php,
+	grade/report/outcomes/db/access.php,
+	grade/report/overview/renderer.php,
+	grade/report/overview/db/access.php,
+	grade/report/user/db/access.php,
+	install/lang/ca_valencia/langconfig.php,
+	install/lang/en_ar/langconfig.php, install/lang/hr/install.php,
+	install/lang/kl/langconfig.php, lang/en/auth.php,
+	lang/en/question.php, lib/accesslib.php, lib/eventslib.php,
+	lib/filelib.php, lib/html2text.php, lib/moodlelib.php,
+	lib/navigationlib.php, lib/questionlib.php, lib/setuplib.php,
+	lib/weblib.php, lib/db/access.php, lib/db/events.php,
+	lib/dml/oci_native_moodle_database.php,
+	lib/filebrowser/file_browser.php, lib/filebrowser/file_info.php,
+	lib/filebrowser/file_info_context_course.php,
+	lib/filebrowser/file_info_context_coursecat.php,
+	lib/filebrowser/file_info_context_module.php,
+	lib/filebrowser/file_info_context_system.php,
+	lib/filebrowser/file_info_context_user.php,
+	lib/filebrowser/file_info_stored.php,
+	lib/filebrowser/virtual_root_file.php,
+	lib/filestorage/file_archive.php,
+	lib/filestorage/file_exceptions.php,
+	lib/filestorage/file_packer.php, lib/filestorage/file_storage.php,
+	lib/filestorage/stored_file.php, lib/filestorage/zip_archive.php,
+	lib/filestorage/zip_packer.php, lib/form/filemanager.php,
+	lib/grade/constants.php, lib/simpletest/testweblib.php,
+	login/index_form.html, mod/assignment/lib.php,
+	mod/assignment/backup/moodle2/backup_assignment_activity_task.class
+	.php, mod/assignment/db/access.php, mod/assignment/db/events.php,
+	mod/chat/backup/moodle2/backup_chat_activity_task.class.php,
+	mod/chat/db/access.php, mod/chat/db/events.php,
+	mod/choice/backup/moodle2/backup_choice_activity_task.class.php,
+	mod/choice/db/access.php, mod/data/lib.php,
+	mod/data/backup/moodle2/backup_data_activity_task.class.php,
+	mod/data/db/access.php, mod/feedback/lib.php,
+	mod/feedback/backup/moodle2/backup_feedback_activity_task.class.php
+	, mod/feedback/db/access.php, mod/folder/lib.php,
+	mod/folder/backup/moodle2/backup_folder_activity_task.class.php,
+	mod/folder/db/access.php, mod/forum/lib.php,
+	mod/forum/backup/moodle2/backup_forum_activity_task.class.php,
+	mod/forum/db/access.php, mod/forum/db/events.php,
+	mod/glossary/lib.php,
+	mod/glossary/backup/moodle2/backup_glossary_activity_task.class.php
+	, mod/glossary/db/access.php, mod/imscp/lib.php,
+	mod/imscp/backup/moodle2/backup_imscp_activity_task.class.php,
+	mod/imscp/db/access.php,
+	mod/label/backup/moodle2/backup_label_activity_task.class.php,
+	mod/lesson/lib.php, mod/lesson/styles.css,
+	mod/lesson/backup/moodle2/backup_lesson_activity_task.class.php,
+	mod/lesson/db/access.php, mod/lesson/pagetypes/multichoice.php,
+	mod/lti/backup/moodle2/backup_lti_activity_task.class.php,
+	mod/lti/db/access.php, mod/page/lib.php,
+	mod/page/backup/moodle1/lib.php,
+	mod/page/backup/moodle2/backup_page_activity_task.class.php,
+	mod/page/db/access.php, mod/quiz/lib.php,
+	mod/quiz/backup/moodle2/backup_quiz_activity_task.class.php,
+	mod/quiz/db/access.php, mod/quiz/db/events.php,
+	mod/quiz/report/grading/db/access.php,
+	mod/quiz/report/statistics/lib.php,
+	mod/quiz/report/statistics/db/access.php, mod/resource/lib.php,
+	mod/resource/backup/moodle2/backup_resource_activity_task.class.php
+	, mod/resource/db/access.php, mod/scorm/lib.php,
+	mod/scorm/backup/moodle2/backup_scorm_activity_task.class.php,
+	mod/scorm/db/access.php,
+	mod/survey/backup/moodle2/backup_survey_activity_task.class.php,
+	mod/survey/db/access.php,
+	mod/url/backup/moodle2/backup_url_activity_task.class.php,
+	mod/url/db/access.php, mod/wiki/lib.php, mod/wiki/locallib.php,
+	mod/wiki/backup/moodle2/backup_wiki_activity_task.class.php,
+	mod/wiki/db/access.php, mod/workshop/lib.php,
+	mod/workshop/backup/moodle2/backup_workshop_activity_task.class.php
+	, mod/workshop/backup/moodle2/backup_workshop_settingslib.php,
+	mod/workshop/backup/moodle2/backup_workshop_stepslib.php,
+	mod/workshop/db/access.php,
+	mod/workshop/form/accumulative/assessment_form.php,
+	mod/workshop/form/accumulative/edit_form.php,
+	mod/workshop/form/accumulative/lib.php,
+	mod/workshop/form/accumulative/version.php,
+	mod/workshop/form/accumulative/backup/moodle1/lib.php,
+	mod/workshop/form/accumulative/backup/moodle2/backup_workshopform_a
+	ccumulative_subplugin.class.php,
+	mod/workshop/form/accumulative/backup/moodle2/restore_workshopform_
+	accumulative_subplugin.class.php,
+	mod/workshop/form/accumulative/db/install.php,
+	mod/workshop/form/accumulative/db/upgrade.php,
+	mod/workshop/form/accumulative/lang/en/workshopform_accumulative.ph
+	p, mod/workshop/form/accumulative/simpletest/testlib.php,
+	mod/workshop/form/comments/assessment_form.php,
+	mod/workshop/form/comments/edit_form.php,
+	mod/workshop/form/comments/lib.php,
+	mod/workshop/form/comments/version.php,
+	mod/workshop/form/comments/backup/moodle1/lib.php,
+	mod/workshop/form/comments/backup/moodle2/backup_workshopform_comme
+	nts_subplugin.class.php,
+	mod/workshop/form/comments/backup/moodle2/restore_workshopform_comm
+	ents_subplugin.class.php,
+	mod/workshop/form/comments/db/install.php,
+	mod/workshop/form/comments/db/upgrade.php,
+	mod/workshop/form/comments/lang/en/workshopform_comments.php,
+	mod/workshop/form/numerrors/assessment_form.php,
+	mod/workshop/form/numerrors/edit_form.php,
+	mod/workshop/form/numerrors/lib.php,
+	mod/workshop/form/numerrors/settings.php,
+	mod/workshop/form/numerrors/version.php,
+	mod/workshop/form/numerrors/backup/moodle1/lib.php,
+	mod/workshop/form/numerrors/backup/moodle2/backup_workshopform_nume
+	rrors_subplugin.class.php,
+	mod/workshop/form/numerrors/backup/moodle2/restore_workshopform_num
+	errors_subplugin.class.php,
+	mod/workshop/form/numerrors/db/install.php,
+	mod/workshop/form/numerrors/db/upgrade.php,
+	mod/workshop/form/numerrors/lang/en/workshopform_numerrors.php,
+	mod/workshop/form/numerrors/simpletest/testlib.php,
+	mod/workshop/form/rubric/assessment_form.php,
+	mod/workshop/form/rubric/edit_form.php,
+	mod/workshop/form/rubric/lib.php,
+	mod/workshop/form/rubric/version.php,
+	mod/workshop/form/rubric/backup/moodle1/lib.php,
+	mod/workshop/form/rubric/backup/moodle2/backup_workshopform_rubric_
+	subplugin.class.php,
+	mod/workshop/form/rubric/backup/moodle2/restore_workshopform_rubric
+	_subplugin.class.php, mod/workshop/form/rubric/db/install.php,
+	mod/workshop/form/rubric/db/upgrade.php,
+	mod/workshop/form/rubric/lang/en/workshopform_rubric.php,
+	mod/workshop/form/rubric/simpletest/testlib.php,
+	portfolio/googledocs/db/events.php, portfolio/picasa/db/events.php,
+	question/previewlib.php, question/type/edit_question_form.php,
+	question/type/questiontypebase.php,
+	question/type/calculated/lib.php,
+	question/type/calculated/questiontype.php,
+	question/type/calculatedmulti/lib.php,
+	question/type/calculatedmulti/questiontype.php,
+	question/type/calculatedsimple/lib.php,
+	question/type/essay/lib.php, question/type/match/lib.php,
+	question/type/match/questiontype.php,
+	question/type/multianswer/questiontype.php,
+	question/type/multichoice/lib.php,
+	question/type/multichoice/questiontype.php,
+	question/type/numerical/lib.php,
+	question/type/numerical/questiontype.php,
+	question/type/shortanswer/lib.php,
+	question/type/shortanswer/questiontype.php,
+	question/type/truefalse/lib.php, report/completion/db/access.php,
+	report/courseoverview/db/access.php, report/log/db/access.php,
+	report/loglive/db/access.php, report/outline/db/access.php,
+	report/participation/db/access.php, report/progress/db/access.php,
+	report/questioninstances/db/access.php,
+	report/security/db/access.php, report/stats/db/access.php,
+	repository/alfresco/db/access.php, repository/boxnet/db/access.php,
+	repository/coursefiles/db/access.php,
+	repository/dropbox/db/access.php,
+	repository/filesystem/db/access.php,
+	repository/flickr/db/access.php,
+	repository/flickr_public/db/access.php,
+	repository/googledocs/db/access.php,
+	repository/local/db/access.php, repository/merlot/db/access.php,
+	repository/picasa/db/access.php, repository/recent/db/access.php,
+	repository/s3/db/access.php, repository/upload/db/access.php,
+	repository/url/db/access.php, repository/user/db/access.php,
+	repository/webdav/db/access.php,
+	repository/wikimedia/db/access.php,
+	repository/youtube/db/access.php,
+	theme/afterburner/style/afterburner_layout.css,
+	theme/afterburner/style/afterburner_styles.css,
+	theme/anomaly/style/base.css, theme/anomaly/style/general.css,
+	theme/base/style/core.css, theme/base/style/message.css,
+	theme/formal_white/style/core.css, theme/splash/config.php,
+	theme/splash/lib.php, theme/splash/settings.php,
+	theme/splash/version.php, theme/splash/lang/en/theme_splash.php,
+	theme/splash/layout/embedded.php, theme/splash/layout/general.php,
+	theme/splash/layout/report.php, theme/splash/pix/arrow-menu.gif,
+	theme/splash/pix/blue-theme.jpg, theme/splash/pix/blue-theme2.jpg,
+	theme/splash/pix/blue.jpg, theme/splash/pix/contentbg.jpg,
+	theme/splash/pix/contentbgright.jpg, theme/splash/pix/csmenubg.jpg,
+	theme/splash/pix/dropdownbg.jpg, theme/splash/pix/green-theme.jpg,
+	theme/splash/pix/green-theme2.jpg, theme/splash/pix/green.jpg,
+	theme/splash/pix/header.jpg, theme/splash/pix/loginpanel.jpg,
+	theme/splash/pix/logobgleft.jpg,
+	theme/splash/pix/logobgleftblue.jpg,
+	theme/splash/pix/logobgleftgreen.jpg,
+	theme/splash/pix/logobgleftorange.jpg,
+	theme/splash/pix/logobgright.jpg,
+	theme/splash/pix/logobgrightblue.jpg,
+	theme/splash/pix/logobgrightgreen.jpg,
+	theme/splash/pix/logobgrightorange.jpg,
+	theme/splash/pix/orange-theme.jpg,
+	theme/splash/pix/orange-theme2.jpg, theme/splash/pix/orange.jpg,
+	theme/splash/pix/post-sbbg.jpg,
+	theme/splash/pix/post-sbheaderbg.jpg,
+	theme/splash/pix/pre-sbbg.jpg, theme/splash/pix/pre-sbheaderbg.jpg,
+	theme/splash/pix/red-theme.jpg, theme/splash/pix/red-theme2.jpg,
+	theme/splash/pix/red.jpg, theme/splash/pix/sbheaderbg.jpg,
+	theme/splash/pix/switchbg.jpg, theme/splash/pix/userinfobg.jpg,
+	theme/splash/style/blue.css, theme/splash/style/core.css,
+	theme/splash/style/editor.css, theme/splash/style/green.css,
+	theme/splash/style/ie.css, theme/splash/style/menus.css,
+	theme/splash/style/orange.css, theme/splash/style/pagelayout.css,
+	theme/splash/style/red.css, theme/splash/style/settings.css,
+	theme/splash/style/sl.css,
+	theme/splash/yui/colourswitcher/colourswitcher.js,
+	user/editadvanced.php, user/externallib.php, user/lib.php,
+	githash.php, version.php, blocks/dock.js,
+	blocks/community/communitycourse.php,
+	blocks/community/locallib.php, blocks/community/renderer.php,
+	blocks/community/yui/imagegallery/imagegallery.js,
+	blocks/navigation/block_navigation.php,
+	blocks/navigation/renderer.php, blocks/navigation/db/upgrade.php,
+	blocks/participants/block_participants.php,
+	blocks/section_links/config_instance.html, calendar/delete.php,
+	calendar/event.php, calendar/lib.php, course/completion.php,
+	course/info.php, course/publish/forms.php,
+	course/publish/index.php, course/publish/lib.php,
+	course/publish/metadata.php, course/publish/renderer.php,
+	enrol/locallib.php, enrol/cohort/ajax.php,
+	filter/algebra/AlgParser.pm, grade/edit/scale/edit_form.php,
+	grade/report/overview/renderer.php,
+	install/lang/ca_valencia/langconfig.php,
+	install/lang/en_ar/langconfig.php, install/lang/hr/install.php,
+	install/lang/ka/admin.php, install/lang/ka/moodle.php,
+	install/lang/kl/langconfig.php, install/lang/tt/langconfig.php,
+	lang/en/auth.php, lang/en/question.php, lib/html2text.php,
+	lib/moodlelib.php, lib/weblib.php,
+	lib/dml/oci_native_moodle_database.php, lib/form/filemanager.php,
+	lib/simpletest/testweblib.php, login/index_form.html,
+	mod/data/lib.php, mod/glossary/lib.php, mod/lesson/styles.css,
+	mod/lesson/pagetypes/multichoice.php,
+	mod/page/backup/moodle1/lib.php, mod/wiki/locallib.php,
+	question/type/edit_question_form.php,
+	question/type/questiontypebase.php,
+	question/type/calculated/questiontype.php,
+	question/type/calculatedmulti/questiontype.php,
+	question/type/match/questiontype.php,
+	question/type/multianswer/questiontype.php,
+	question/type/multichoice/questiontype.php,
+	question/type/numerical/questiontype.php,
+	question/type/shortanswer/questiontype.php,
+	theme/afterburner/style/afterburner_layout.css,
+	theme/afterburner/style/afterburner_styles.css,
+	theme/anomaly/style/base.css, theme/anomaly/style/general.css,
+	theme/base/style/core.css, theme/base/style/message.css,
+	theme/formal_white/style/core.css, user/editadvanced.php,
+	user/externallib.php, user/lib.php: 
+	
+	weekly cvs snapshot
+
+2012-02-23 Thursday 19:29  moodlerobot
+
+	* githash.php, version.php, install/lang/ca/error.php,
+	install/lang/de/admin.php, install/lang/it/admin.php,
+	install/lang/ka/moodle.php, install/lang/lt/admin.php,
+	install/lang/lt/moodle.php, install/lang/lt_uni/langconfig.php,
+	mod/assignment/lib.php,
+	mod/assignment/type/upload/assignment.class.php,
+	mod/assignment/type/uploadsingle/assignment.class.php, githash.php,
+	version.php: 
+	
+	weekly cvs snapshot
+
+2012-02-23 Thursday 19:25  moodlerobot
+
+	* install/lang/lt_uni/langconfig.php: 
+	
+	file langconfig.php was added on branch MOODLE_22_STABLE on
+	2012-02-23 11:26:50 +0000
+
+2012-02-23 Thursday 19:25  moodlerobot
+
+	* install/lang/lt/admin.php: 
+	
+	file admin.php was added on branch MOODLE_20_STABLE on 2012-02-23
+	11:29:40 +0000
+
+2012-02-23 Thursday 19:25  moodlerobot
+
+	* install/lang/ka/moodle.php: 
+	
+	file moodle.php was added on branch MOODLE_20_STABLE on 2012-02-23
+	11:29:40 +0000
+
+2012-02-23 Thursday 19:25  moodlerobot
+
+	* install/lang/ka/moodle.php: 
+	
+	file moodle.php was added on branch MOODLE_22_STABLE on 2012-02-23
+	11:26:49 +0000
+
+2012-02-23 Thursday 19:25  moodlerobot
+
+	* install/lang/lt_uni/langconfig.php: 
+	
+	file langconfig.php was added on branch MOODLE_20_STABLE on
+	2012-02-23 11:29:40 +0000
+
+2012-02-23 Thursday 19:25  moodlerobot
+
+	* install/lang/ka/moodle.php: 
+	
+	file moodle.php was added on branch MOODLE_21_STABLE on 2012-02-23
+	11:28:37 +0000
+
+2012-02-23 Thursday 19:25  moodlerobot
+
+	* install/lang/lt_uni/langconfig.php: 
+	
+	file langconfig.php was added on branch MOODLE_21_STABLE on
+	2012-02-23 11:28:37 +0000
+
+2012-02-23 Thursday 19:25  moodlerobot
+
+	* install/lang/lt/admin.php: 
+	
+	file admin.php was added on branch MOODLE_22_STABLE on 2012-02-23
+	11:26:49 +0000
+
+2012-02-23 Thursday 19:25  moodlerobot
+
+	* backup/cc/cc_lib/cc_converter_label.php: 
+	
+	file cc_converter_label.php was added on branch MOODLE_22_STABLE on
+	2012-02-23 11:26:48 +0000
+
+2012-02-23 Thursday 19:25  moodlerobot
+
+	* githash.php, version.php, admin/mnet/peer_forms.php,
+	admin/settings/grades.php,
+	admin/tool/customlang/lang/en/tool_customlang.php,
+	backup/cc/cc_includes.php, backup/cc/cc_lib/cc_asssesment.php,
+	backup/cc/cc_lib/cc_basiclti.php,
+	backup/cc/cc_lib/cc_convert_moodle2.php,
+	backup/cc/cc_lib/cc_converter_label.php,
+	backup/cc/cc_lib/cc_forum.php, backup/cc/cc_lib/cc_page.php,
+	backup/cc/cc_lib/cc_resources.php, backup/cc/cc_lib/cc_weblink.php,
+	backup/cc/cc_lib/xmlbase.php,
+	backup/moodle2/backup_plan_builder.class.php,
+	backup/moodle2/restore_stepslib.php, blocks/dock.js,
+	blocks/community/communitycourse.php, blog/rsslib.php,
+	course/publish/backup.php, enrol/ldap/lang/en/enrol_ldap.php,
+	enrol/manual/lib.php,
+	enrol/manual/yui/quickenrolment/quickenrolment.js, grade/index.php,
+	grade/lib.php, grade/querylib.php, grade/edit/letter/edit_form.php,
+	grade/edit/letter/index.php, grade/edit/letter/tabs.php,
+	grade/edit/outcome/course.php, grade/edit/outcome/edit.php,
+	grade/edit/outcome/edit_form.php, grade/edit/outcome/export.php,
+	grade/edit/outcome/import.php,
+	grade/edit/outcome/import_outcomes_form.php,
+	grade/edit/outcome/index.php, grade/edit/outcome/tabs.php,
+	grade/edit/scale/edit.php, grade/edit/scale/edit_form.php,
+	grade/edit/scale/index.php, grade/edit/settings/form.php,
+	grade/edit/settings/index.php, grade/edit/tree/action.php,
+	grade/edit/tree/calculation.php,
+	grade/edit/tree/calculation_form.php, grade/edit/tree/category.php,
+	grade/edit/tree/category_form.php, grade/edit/tree/grade.php,
+	grade/edit/tree/grade_form.php, grade/edit/tree/index.php,
+	grade/edit/tree/item.php, grade/edit/tree/item_form.php,
+	grade/edit/tree/lib.php, grade/edit/tree/outcomeitem.php,
+	grade/edit/tree/outcomeitem_form.php, grade/grading/manage.php,
+	grade/grading/pick.php, grade/grading/form/rubric/styles.css,
+	grade/report/index.php, grade/report/lib.php,
+	grade/report/grader/ajax_callbacks.php,
+	grade/report/grader/index.php, grade/report/grader/lib.php,
+	grade/report/grader/preferences.php,
+	grade/report/grader/preferences_form.php,
+	grade/report/grader/quickedit_item.php,
+	grade/report/grader/settings.php, grade/report/grader/tabs.php,
+	grade/report/grader/version.php, grade/report/grader/db/access.php,
+	grade/report/grader/lang/en/gradereport_grader.php,
+	grade/report/outcomes/index.php, grade/report/outcomes/version.php,
+	grade/report/outcomes/db/access.php,
+	grade/report/outcomes/lang/en/gradereport_outcomes.php,
+	grade/report/overview/index.php, grade/report/overview/lib.php,
+	grade/report/overview/renderer.php,
+	grade/report/overview/settings.php,
+	grade/report/overview/version.php,
+	grade/report/overview/db/access.php,
+	grade/report/overview/lang/en/gradereport_overview.php,
+	grade/report/user/index.php, grade/report/user/lib.php,
+	grade/report/user/renderer.php, grade/report/user/settings.php,
+	grade/report/user/version.php, grade/report/user/db/access.php,
+	grade/report/user/lang/en/gradereport_user.php, group/assign.php,
+	group/autogroup.php, group/autogroup_form.php, group/clientlib.js,
+	group/delete.php, group/externallib.php, group/group.php,
+	group/group_form.php, group/grouping.php, group/grouping_form.php,
+	group/groupings.php, group/import.php, group/import_form.php,
+	group/index.php, group/lib.php, group/members.php,
+	group/overview.php, group/tabs.php, install/lang/ca/error.php,
+	install/lang/de/admin.php, install/lang/it/admin.php,
+	install/lang/ka/moodle.php, install/lang/lt/admin.php,
+	install/lang/lt/moodle.php, install/lang/lt_uni/langconfig.php,
+	lang/en/backup.php, lang/en/grades.php, lang/en/langconfig.php,
+	lang/en/mnet.php, lib/dmllib.php, lib/formslib.php,
+	lib/gradelib.php, lib/grouplib.php, lib/messagelib.php,
+	lib/moodlelib.php, lib/outputactions.php, lib/outputcomponents.php,
+	lib/outputfactories.php, lib/outputlib.php,
+	lib/outputrenderers.php, lib/outputrequirementslib.php,
+	lib/pagelib.php, lib/pluginlib.php, lib/rsslib.php,
+	lib/ajax/ajaxlib.php, lib/ajax/getnavbranch.php,
+	lib/ajax/setuserpref.php, lib/db/install.xml, lib/db/upgrade.php,
+	lib/dml/database_column_info.php, lib/dml/moodle_database.php,
+	lib/dml/moodle_recordset.php, lib/dml/moodle_temptables.php,
+	lib/dml/moodle_transaction.php,
+	lib/dml/mssql_native_moodle_database.php,
+	lib/dml/mssql_native_moodle_recordset.php,
+	lib/dml/mssql_native_moodle_temptables.php,
+	lib/dml/mysqli_native_moodle_database.php,
+	lib/dml/mysqli_native_moodle_recordset.php,
+	lib/dml/mysqli_native_moodle_temptables.php,
+	lib/dml/oci_native_moodle_database.php,
+	lib/dml/oci_native_moodle_package.sql,
+	lib/dml/oci_native_moodle_recordset.php,
+	lib/dml/oci_native_moodle_temptables.php,
+	lib/dml/pdo_moodle_database.php, lib/dml/pdo_moodle_recordset.php,
+	lib/dml/pgsql_native_moodle_database.php,
+	lib/dml/pgsql_native_moodle_recordset.php,
+	lib/dml/pgsql_native_moodle_temptables.php,
+	lib/dml/sqlite3_pdo_moodle_database.php,
+	lib/dml/sqlsrv_native_moodle_database.php,
+	lib/dml/sqlsrv_native_moodle_recordset.php,
+	lib/dml/sqlsrv_native_moodle_temptables.php,
+	lib/form/advcheckbox.php, lib/form/button.php, lib/form/cancel.php,
+	lib/form/checkbox.php, lib/form/dateselector.php,
+	lib/form/datetimeselector.php, lib/form/duration.php,
+	lib/form/editor.php, lib/form/file.php, lib/form/filemanager.php,
+	lib/form/filepicker.php, lib/form/format.php, lib/form/grading.php,
+	lib/form/group.php, lib/form/header.php, lib/form/hidden.php,
+	lib/form/htmleditor.php, lib/form/modgrade.php,
+	lib/form/modvisible.php, lib/form/password.php,
+	lib/form/passwordunmask.php, lib/form/questioncategory.php,
+	lib/form/radio.php, lib/form/recaptcha.php,
+	lib/form/searchableselector.php, lib/form/select.php,
+	lib/form/selectgroups.php, lib/form/selectwithlink.php,
+	lib/form/selectyesno.php, lib/form/static.php, lib/form/submit.php,
+	lib/form/submitlink.php, lib/form/tags.php, lib/form/text.php,
+	lib/form/textarea.php, lib/form/url.php, lib/form/warning.php,
+	lib/form/simpletest/testduration.php, lib/grade/constants.php,
+	lib/grade/grade_category.php, lib/grade/grade_grade.php,
+	lib/grade/grade_item.php, lib/grade/grade_object.php,
+	lib/grade/grade_outcome.php, lib/grade/grade_scale.php,
+	lib/grade/simpletest/testgradecategory.php,
+	lib/grade/simpletest/testgradegrades.php,
+	lib/grade/simpletest/testgradeitem.php,
+	lib/grade/simpletest/testgradeoutcome.php,
+	lib/grade/simpletest/testgradescale.php,
+	lib/simpletest/testmoodlelib.php, message/defaultoutputs.php,
+	message/discussion.php, message/edit.php, message/externallib.php,
+	message/index.php, message/lib.php, message/renderer.php,
+	message/send_form.php, message/output/lib.php,
+	message/output/email/lib.php,
+	message/output/email/message_output_email.php,
+	message/output/email/settings.php,
+	message/output/email/version.php,
+	message/output/email/db/install.php,
+	message/output/email/db/upgrade.php,
+	message/output/email/lang/en/message_email.php,
+	message/output/jabber/lib.php,
+	message/output/jabber/message_output_jabber.php,
+	message/output/jabber/settings.php,
+	message/output/jabber/version.php,
+	message/output/jabber/db/install.php,
+	message/output/jabber/db/upgrade.php,
+	message/output/jabber/lang/en/message_jabber.php,
+	message/output/popup/lib.php,
+	message/output/popup/message_output_popup.php,
+	message/output/popup/version.php,
+	message/output/popup/db/install.php,
+	message/output/popup/db/upgrade.php,
+	message/output/popup/lang/en/message_popup.php, mnet/peer.php,
+	mod/assignment/grade.php, mod/assignment/lib.php,
+	mod/assignment/type/upload/assignment.class.php,
+	mod/assignment/type/uploadsingle/assignment.class.php,
+	mod/data/lib.php, mod/data/rsslib.php, mod/forum/lib.php,
+	mod/forum/rsslib.php, mod/glossary/lib.php,
+	mod/glossary/mod_form.php, mod/glossary/rsslib.php,
+	mod/glossary/showentry.php, mod/glossary/version.php,
+	mod/glossary/view.php, mod/glossary/db/install.xml,
+	mod/glossary/db/upgrade.php,
+	mod/glossary/formats/entrylist/entrylist_format.php,
+	mod/glossary/lang/en/glossary.php, mod/lesson/grade.php,
+	mod/lesson/lib.php, mod/lesson/renderer.php, mod/lesson/styles.css,
+	mod/lesson/backup/moodle2/restore_lesson_stepslib.php,
+	mod/lesson/lang/en/lesson.php, mod/lti/lib.php, mod/quiz/grade.php,
+	mod/quiz/lib.php, mod/scorm/grade.php, mod/scorm/lib.php,
+	mod/scorm/locallib.php, mod/scorm/mod_form.php,
+	mod/scorm/module.js, mod/scorm/styles.css,
+	mod/scorm/datamodels/debug.js.php,
+	mod/scorm/datamodels/scorm_datamodels.js,
+	mod/scorm/lang/en/scorm.php, mod/scorm/report/basic/report.php,
+	mod/scorm/report/interactions/report.php, mod/workshop/lib.php,
+	repository/filepicker.js, rss/file.php, rss/renderer.php,
+	theme/afterburner/style/afterburner_layout.css,
+	theme/arialist/style/settings.css, theme/standard/style/core.css,
+	webservice/lib.php, webservice/rest/locallib.php,
+	webservice/rest/server.php, webservice/soap/locallib.php,
+	githash.php, version.php, admin/mnet/peer_forms.php,
+	admin/tool/customlang/lang/en/tool_customlang.php,
+	backup/cc/cc_includes.php, backup/cc/cc_lib/cc_asssesment.php,
+	backup/cc/cc_lib/cc_basiclti.php,
+	backup/cc/cc_lib/cc_convert_moodle2.php,
+	backup/cc/cc_lib/cc_converter_label.php,
+	backup/cc/cc_lib/cc_forum.php, backup/cc/cc_lib/cc_page.php,
+	backup/cc/cc_lib/cc_resources.php, backup/cc/cc_lib/cc_weblink.php,
+	backup/cc/cc_lib/xmlbase.php,
+	backup/moodle2/backup_plan_builder.class.php,
+	backup/moodle2/restore_stepslib.php, blocks/dock.js,
+	blocks/community/communitycourse.php, course/publish/backup.php,
+	enrol/ldap/lang/en/enrol_ldap.php,
+	grade/grading/form/rubric/styles.css, install/lang/ca/error.php,
+	install/lang/de/admin.php, install/lang/it/admin.php,
+	install/lang/ka/moodle.php, install/lang/lt/admin.php,
+	install/lang/lt/moodle.php, install/lang/lt_uni/langconfig.php,
+	lang/en/backup.php, lang/en/mnet.php, lib/pluginlib.php,
+	lib/db/install.xml, lib/db/upgrade.php, message/index.php,
+	mnet/peer.php, mod/assignment/lib.php,
+	mod/assignment/type/upload/assignment.class.php,
+	mod/assignment/type/uploadsingle/assignment.class.php,
+	mod/forum/lib.php, mod/glossary/showentry.php,
+	mod/glossary/formats/entrylist/entrylist_format.php,
+	mod/lesson/lib.php, mod/lesson/renderer.php, mod/lesson/styles.css,
+	mod/lesson/backup/moodle2/restore_lesson_stepslib.php,
+	mod/lesson/lang/en/lesson.php, mod/scorm/lib.php,
+	mod/scorm/locallib.php, mod/scorm/mod_form.php,
+	mod/scorm/module.js, mod/scorm/styles.css,
+	mod/scorm/datamodels/debug.js.php, mod/scorm/lang/en/scorm.php,
+	mod/scorm/report/basic/report.php,
+	mod/scorm/report/interactions/report.php, repository/filepicker.js,
+	theme/afterburner/style/afterburner_layout.css,
+	theme/arialist/style/settings.css, webservice/lib.php,
+	webservice/rest/locallib.php, webservice/rest/server.php,
+	webservice/soap/locallib.php, githash.php, version.php,
+	admin/mnet/peer_forms.php,
+	backup/moodle2/backup_plan_builder.class.php,
+	backup/moodle2/restore_stepslib.php, blocks/dock.js,
+	enrol/ldap/lang/en/enrol_ldap.php, install/lang/ca/error.php,
+	install/lang/de/admin.php, install/lang/it/admin.php,
+	install/lang/ka/moodle.php, install/lang/lt_uni/langconfig.php,
+	lang/en/backup.php, lang/en/mnet.php, lib/pluginlib.php,
+	lib/db/install.xml, lib/db/upgrade.php, message/index.php,
+	mnet/peer.php, mod/assignment/lib.php,
+	mod/assignment/type/upload/assignment.class.php,
+	mod/assignment/type/uploadsingle/assignment.class.php,
+	mod/forum/lib.php, mod/glossary/showentry.php,
+	mod/glossary/formats/entrylist/entrylist_format.php,
+	mod/lesson/lib.php, mod/lesson/renderer.php, mod/lesson/styles.css,
+	mod/lesson/backup/moodle2/restore_lesson_stepslib.php,
+	mod/lesson/lang/en/lesson.php, mod/scorm/lib.php,
+	mod/scorm/locallib.php, mod/scorm/mod_form.php,
+	mod/scorm/report.php, mod/scorm/datamodels/debug.js.php,
+	mod/scorm/lang/en/scorm.php, repository/filepicker.js,
+	theme/afterburner/style/afterburner_layout.css,
+	theme/arialist/style/settings.css, webservice/lib.php,
+	webservice/rest/locallib.php, webservice/soap/locallib.php: 
+	
+	weekly cvs snapshot
+
+2012-02-17 Friday 09:51  moodlerobot
+
+	* githash.php, version.php, install/lang/rm_surs/moodle.php,
+	install/lang/vi/admin.php, lang/en/form.php, lang/en/moodle.php,
+	lib/navigationlib.php, mod/data/export.php, mod/data/lib.php,
+	mod/wiki/editors/wiki_editor.php, mod/wiki/lang/en/wiki.php,
+	githash.php, version.php, mod/data/export.php: 
+	
+	weekly cvs snapshot
+
+2012-02-17 Friday 09:50  moodlerobot
+
+	* install/lang/rm_surs/admin.php: 
+	
+	file admin.php was initially added on branch MOODLE_21_STABLE.
+
+2012-02-17 Friday 09:47  moodlerobot
+
+	* grade/grading/form/rubric/preview.php: 
+	
+	file preview.php was added on branch MOODLE_22_STABLE on 2012-02-17
+	01:48:32 +0000
+
+2012-02-17 Friday 09:47  moodlerobot
+
+	* install/lang/rm_surs/moodle.php: 
+	
+	file moodle.php was added on branch MOODLE_22_STABLE on 2012-02-17
+	01:48:32 +0000
+
+2012-02-17 Friday 09:47  moodlerobot
+
+	* install/lang/rm_surs/moodle.php: 
+	
+	file moodle.php was added on branch MOODLE_20_STABLE on 2012-02-17
+	01:51:16 +0000
+
+2012-02-17 Friday 09:47  moodlerobot
+
+	* install/lang/rm_surs/moodle.php: 
+	
+	file moodle.php was added on branch MOODLE_21_STABLE on 2012-02-17
+	01:50:02 +0000
+
+2012-02-17 Friday 09:47  moodlerobot
+
+	* githash.php, version.php, admin/settings.php,
+	admin/cli/install.php, admin/tool/dbtransfer/locallib.php,
+	admin/tool/uploaduser/index.php,
+	admin/tool/xmldb/actions/create_xml_file/create_xml_file.class.php,
+	admin/webservice/forms.php, admin/webservice/service_functions.php,
+	admin/webservice/service_users.php, blocks/comments/lib.php,
+	blog/lib.php, comment/comment_ajax.php, comment/comment_post.php,
+	comment/index.php, comment/lib.php, comment/locallib.php,
+	course/renderer.php, course/search.php,
+	enrol/category/db/access.php, filter/data/filter.php,
+	filter/mediaplugin/filter.php, grade/export/grade_export_form.php,
+	grade/grading/lib.php, grade/grading/form/lib.php,
+	grade/grading/form/rubric/lib.php,
+	grade/grading/form/rubric/preview.php,
+	grade/grading/form/rubric/renderer.php,
+	grade/grading/form/rubric/lang/en/gradingform_rubric.php,
+	grade/report/grader/lib.php, install/lang/rm_surs/moodle.php,
+	install/lang/vi/admin.php, lang/en/form.php, lang/en/moodle.php,
+	lib/accesslib.php, lib/adminlib.php, lib/datalib.php,
+	lib/formslib.php, lib/javascript-static.js, lib/moodlelib.php,
+	lib/navigationlib.php, lib/outputrequirementslib.php,
+	lib/portfoliolib.php, lib/completion/completion_criteria_date.php,
+	lib/ddl/database_manager.php, lib/ddl/mssql_sql_generator.php,
+	lib/ddl/mysql_sql_generator.php, lib/ddl/oracle_sql_generator.php,
+	lib/ddl/postgres_sql_generator.php, lib/ddl/sql_generator.php,
+	lib/ddl/sqlite_sql_generator.php, lib/form/dndupload.js,
+	lib/form/filemanager.js, lib/form/filemanager.php,
+	lib/form/filepicker.js,
+	lib/htmlpurifier/HTMLPurifier/Lexer/PH5P.php,
+	lib/portfolio/caller.php, lib/portfolio/constants.php,
+	lib/portfolio/exceptions.php, lib/portfolio/exporter.php,
+	lib/portfolio/formats.php, lib/portfolio/forms.php,
+	lib/portfolio/plugin.php, lib/portfolio/formats/leap2a/lib.php,
+	mod/assignment/lib.php, mod/assignment/db/log.php,
+	mod/chat/db/log.php, mod/choice/renderer.php,
+	mod/choice/db/log.php, mod/data/export.php, mod/data/lib.php,
+	mod/data/db/log.php, mod/data/field/file/field.class.php,
+	mod/feedback/db/log.php, mod/folder/db/log.php,
+	mod/forum/db/log.php, mod/glossary/lib.php,
+	mod/glossary/db/log.php, mod/imscp/db/log.php,
+	mod/label/db/log.php, mod/lesson/view.php,
+	mod/lesson/backup/moodle2/backup_lesson_stepslib.php,
+	mod/lesson/db/log.php, mod/lesson/pagetypes/branchtable.php,
+	mod/lti/db/log.php, mod/lti/lang/en/lti.php, mod/page/db/log.php,
+	mod/quiz/view.php, mod/quiz/db/log.php, mod/resource/db/log.php,
+	mod/resource/lang/en/resource.php, mod/scorm/db/log.php,
+	mod/survey/db/log.php, mod/url/db/log.php, mod/url/lang/en/url.php,
+	mod/wiki/lib.php, mod/wiki/editors/wiki_editor.php,
+	mod/wiki/lang/en/wiki.php, mod/workshop/db/log.php,
+	portfolio/add.php, portfolio/file.php,
+	portfolio/mahara/lang/en/portfolio_mahara.php,
+	question/engine/upgrade/upgradelib.php, report/log/graph.php,
+	report/log/index.php, report/log/lib.php, report/log/locallib.php,
+	report/log/settings.php, report/log/user.php,
+	report/log/version.php, report/log/db/access.php,
+	report/log/db/install.php, report/log/lang/en/report_log.php,
+	report/loglive/index.php, report/loglive/lib.php,
+	report/loglive/settings.php, report/loglive/version.php,
+	report/loglive/db/access.php,
+	report/loglive/lang/en/report_loglive.php, report/stats/graph.php,
+	repository/lib.php, repository/recent/lib.php,
+	repository/upload/lib.php,
+	repository/upload/lang/en/repository_upload.php,
+	tag/coursetags_add.php, tag/coursetags_edit.php,
+	tag/coursetags_more.php, tag/coursetagslib.php, tag/edit.php,
+	tag/edit_form.php, tag/index.php, tag/lib.php, tag/locallib.php,
+	theme/styles.php, theme/base/style/core.css, user/view.php,
+	webservice/rest/lib.php, webservice/rest/simpleserver.php,
+	githash.php, version.php, admin/cli/install.php,
+	admin/tool/dbtransfer/locallib.php,
+	admin/tool/uploaduser/index.php,
+	admin/tool/xmldb/actions/create_xml_file/create_xml_file.class.php,
+	admin/webservice/forms.php, admin/webservice/service_functions.php,
+	admin/webservice/service_users.php, course/renderer.php,
+	course/search.php, enrol/category/db/access.php,
+	filter/data/filter.php, filter/mediaplugin/filter.php,
+	grade/export/grade_export_form.php, grade/grading/lib.php,
+	grade/grading/form/lib.php, grade/grading/form/rubric/lib.php,
+	grade/grading/form/rubric/preview.php,
+	grade/grading/form/rubric/renderer.php,
+	grade/grading/form/rubric/lang/en/gradingform_rubric.php,
+	grade/report/grader/lib.php, install/lang/rm_surs/moodle.php,
+	install/lang/vi/admin.php, lang/en/form.php, lang/en/moodle.php,
+	lib/accesslib.php, lib/adminlib.php, lib/moodlelib.php,
+	lib/navigationlib.php, lib/completion/completion_criteria_date.php,
+	lib/db/upgrade.php, lib/htmlpurifier/HTMLPurifier/Lexer/PH5P.php,
+	mod/assignment/lib.php, mod/choice/renderer.php,
+	mod/data/export.php, mod/data/lib.php,
+	mod/data/field/file/field.class.php, mod/lesson/view.php,
+	mod/lesson/backup/moodle2/backup_lesson_stepslib.php,
+	mod/lesson/pagetypes/branchtable.php, mod/lti/lang/en/lti.php,
+	mod/quiz/view.php, mod/resource/lang/en/resource.php,
+	mod/url/lang/en/url.php, mod/wiki/editors/wiki_editor.php,
+	mod/wiki/lang/en/wiki.php,
+	portfolio/mahara/lang/en/portfolio_mahara.php,
+	question/engine/upgrade/upgradelib.php, report/stats/graph.php,
+	repository/lib.php, repository/recent/lib.php, user/view.php,
+	webservice/rest/lib.php, webservice/rest/simpleserver.php,
+	githash.php, version.php, admin/uploaduser.php,
+	admin/cli/install.php, admin/webservice/forms.php,
+	admin/webservice/service_functions.php,
+	admin/webservice/service_users.php, course/renderer.php,
+	course/search.php, enrol/category/db/access.php,
+	filter/mediaplugin/filter.php, grade/export/grade_export_form.php,
+	grade/report/grader/lib.php, install/lang/rm_surs/admin.php,
+	install/lang/rm_surs/moodle.php, install/lang/vi/admin.php,
+	lang/en/form.php, lang/en/moodle.php, lib/accesslib.php,
+	lib/adminlib.php, lib/moodlelib.php, lib/navigationlib.php,
+	lib/completion/completion_criteria_date.php, lib/db/upgrade.php,
+	lib/htmlpurifier/HTMLPurifier/Lexer/PH5P.php,
+	mod/assignment/lib.php, mod/choice/renderer.php,
+	mod/data/export.php, mod/data/lib.php,
+	mod/data/field/file/field.class.php, mod/lesson/view.php,
+	mod/lesson/backup/moodle2/backup_lesson_stepslib.php,
+	mod/lesson/pagetypes/branchtable.php,
+	mod/resource/lang/en/resource.php, mod/scorm/report.php,
+	mod/url/lang/en/url.php, mod/wiki/editors/wiki_editor.php,
+	mod/wiki/lang/en/wiki.php,
+	portfolio/mahara/lang/en/portfolio_mahara.php,
+	question/engine/upgrade/upgradelib.php, repository/lib.php,
+	repository/recent/lib.php, user/view.php: 
+	
+	weekly cvs snapshot
+
+2012-02-13 Monday 08:50  moodlerobot
+
+	* githash.php, index.php, version.php, course/modedit.php,
+	grade/report/overview/lib.php, lang/en/currencies.php,
+	lib/formslib.php, lib/moodlelib.php, lib/db/log.php,
+	lib/pear/HTML/QuickForm/checkbox.php,
+	lib/simpletest/testmoodlelib.php, mod/forum/unsubscribeall.php,
+	mod/quiz/attemptlib.php, mod/quiz/editlib.php, mod/quiz/lib.php,
+	mod/quiz/locallib.php, mod/quiz/override_form.php,
+	mod/quiz/view.php, tag/index.php, tag/user.php, githash.php,
+	version.php, githash.php, version.php: 
+	
+	weekly cvs snapshot
+
+2012-02-13 Monday 08:47  moodlerobot
+
+	* githash.php, index.php, version.php, blog/index.php,
+	blog/lib.php, calendar/lib.php, grade/report/overview/lib.php,
+	lang/en/currencies.php, lib/formslib.php, lib/moodlelib.php,
+	lib/plagiarismlib.php, lib/textlib.class.php, lib/db/log.php,
+	lib/pear/HTML/QuickForm/checkbox.php,
+	lib/simpletest/testmoodlelib.php, mod/assignment/lib.php,
+	mod/forum/unsubscribeall.php, mod/quiz/attemptlib.php,
+	mod/quiz/editlib.php, mod/quiz/lib.php, mod/quiz/locallib.php,
+	mod/quiz/override_form.php, mod/quiz/view.php, tag/index.php,
+	tag/user.php, theme/formal_white/layout/report.php, githash.php,
+	index.php, version.php, blog/index.php, blog/lib.php,
+	enrol/meta/addinstance_form.php, enrol/meta/lib.php,
+	enrol/meta/locallib.php, enrol/meta/settings.php,
+	enrol/meta/version.php, enrol/meta/cli/sync.php,
+	enrol/meta/db/access.php, enrol/meta/db/uninstall.php,
+	enrol/meta/lang/en/enrol_meta.php, grade/report/overview/lib.php,
+	install/lang/bg/moodle.php, lang/en/currencies.php,
+	lib/formslib.php, lib/moodlelib.php, lib/plagiarismlib.php,
+	lib/db/log.php, lib/pear/HTML/QuickForm/checkbox.php,
+	lib/simpletest/testmoodlelib.php, mod/assignment/lib.php,
+	mod/forum/unsubscribeall.php, mod/quiz/attemptlib.php,
+	mod/quiz/editlib.php, mod/quiz/lib.php, mod/quiz/locallib.php,
+	mod/quiz/override_form.php, mod/quiz/view.php, tag/index.php,
+	tag/user.php: 
+	
+	weekly cvs snapshot
+
