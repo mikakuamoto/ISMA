@@ -21,6 +21,8 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 require_once($CFG->libdir . "/externallib.php");
+require_once($CFG->dirroot.'/calendar/lib.php');
+require_once($CFG->dirroot.'/course/lib.php');
 
 class local_wstemplate_external extends external_api {
 
@@ -57,6 +59,53 @@ class local_wstemplate_external extends external_api {
             throw new moodle_exception('cannotviewprofile');
         }
 
+        $event1["eventtype"] = 'course';
+        $event1["courseid"] = 2;
+        $event1["name"] = 'P1';
+        $event1["description"] = 'Primeira prova';
+        //$event1["timestart"] = make_timestamp(2012, 3, 20, 19, 30, 0);
+        $event1["timeduration"] = 90;
+
+//        $event2["eventtype"] = 'course';
+//        $event2["courseid"] = 2;
+//        $event2["name"] = 'P2';
+//        $event2["description"] = 'Segunda prova';
+//        //$event2["timestart"] = make_timestamp(2012, 3, 20, 21, 15, 0);
+//        $event2["timeduration"] = 90;
+//
+//        $event3["eventtype"] = 'course';
+//        $event3["courseid"] = 2;
+//        $event3["name"] = 'P3';
+//        $event3["description"] = 'Terceira prova'; 
+//        //$event3["timestart"] = make_timestamp(2012, 3, 21, 19, 30, 0);
+//        $event3["timeduration"] = 90;
+
+        $allEvents = Array($event1);
+        
+        
+        for($i=0;$i< count($allEvents);$i++){
+            //$temp = $allEvents[i];
+            $event = new stdClass();
+            $event->eventtype = $event1["eventtype"];
+            $event->courseid = 2;
+            $event->name = $event1["name"];
+            $event->description = $event1["description"];
+            $event->timestart = make_timestamp(2012, 3, 22, 19, 30, 0);
+            //$event->timestart = $temp["timestart"];
+            $event->timeduration = 90  * MINSECS;
+            $event = new calendar_event($event);
+            $event->update($event);
+	}
+
+//        $event = new stdClass();
+//        $event->eventtype = 'course';
+//        $event->courseid = 2;
+//        $event->name = 'psicologia';
+//        $event->description = 'evento de curso de psicologia';
+//        $event->timestart = make_timestamp(2012, 3, 21, 21, 15, 0);
+//        $event->timeduration = 90 * MINSECS;
+//        $event = new calendar_event($event);
+//        $event->update($event);
         return $params['welcomemessage'] . $USER->firstname ;;
     }
 
