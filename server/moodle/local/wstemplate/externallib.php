@@ -32,7 +32,7 @@ class local_wstemplate_external extends external_api {
      */
     public static function hello_world_parameters() {
         return new external_function_parameters(
-                array('welcomemessage' => new external_value(PARAM_TEXT, 'The welcome message. By default it is "Hello world,"', VALUE_DEFAULT, 'Hello world, '))
+                array('welcomemessage' => new external_value(PARAM_TEXT, 'The welcome message. By default it is "Hello world,"'))
         );
     }
 
@@ -40,7 +40,7 @@ class local_wstemplate_external extends external_api {
      * Returns welcome message
      * @return string welcome message
      */
-    public static function hello_world($welcomemessage = 'Hello world, ') {
+    public static function hello_world($welcomemessage = 'hello') {
         global $USER;
 
         //Parameter validation
@@ -58,45 +58,31 @@ class local_wstemplate_external extends external_api {
         if (!has_capability('moodle/user:viewdetails', $context)) {
             throw new moodle_exception('cannotviewprofile');
         }
-
-        $event1["eventtype"] = 'course';
-        $event1["courseid"] = 2;
-        $event1["name"] = 'P1';
-        $event1["description"] = 'Primeira prova';
-        //$event1["timestart"] = make_timestamp(2012, 3, 20, 19, 30, 0);
-        $event1["timeduration"] = 90;
-
-//        $event2["eventtype"] = 'course';
-//        $event2["courseid"] = 2;
-//        $event2["name"] = 'P2';
-//        $event2["description"] = 'Segunda prova';
-//        //$event2["timestart"] = make_timestamp(2012, 3, 20, 21, 15, 0);
-//        $event2["timeduration"] = 90;
-//
-//        $event3["eventtype"] = 'course';
-//        $event3["courseid"] = 2;
-//        $event3["name"] = 'P3';
-//        $event3["description"] = 'Terceira prova'; 
-//        //$event3["timestart"] = make_timestamp(2012, 3, 21, 19, 30, 0);
-//        $event3["timeduration"] = 90;
-
-        $allEvents = Array($event1);
         
-        
-        for($i=0;$i< count($allEvents);$i++){
-            $temp = $allEvents[i];
-            $event = new stdClass();
-            $event->eventtype = $temp["eventtype"];
-            $event->courseid = 2;
-            $event->name = $temp["name"];
-            $event->description = $temp["description"];
-            $event->timestart = make_timestamp(2012, 3, 22, 19, 30, 0);
-            //$event->timestart = $temp["timestart"];
-            $event->timeduration = 90  * MINSECS;
-            $event = new calendar_event($event);
-            $event->update($event);
-	}
+     $string = '<?xml version="1.0" encoding="UTF-8"?>
+                        <calendar>
+                                <event>
+                                        <eventtype>course</eventtype>
+                                        <name>P1</name>
+                                        <description>Primeira prova</description>
+                                </event>
 
+                        </calendar>';
+        
+     $xml = simplexml_load_string($string);
+
+    foreach($xml->event as $event){
+        $newevent = new stdClass();
+        $newevent->eventtype = $event->eventtype;
+        $newevent->courseid = 2;
+        $newevent->name = $event->name;
+        $newevent->description = $event->description;
+        $newevent->timestart = make_timestamp(2012, 4, 29, 19, 30, 0);
+        $newevent->timeduration = 90  * MINSECS;
+        $newevent = new calendar_event($newevent);
+        $newevent->update($newevent);      
+
+    }
 //        $event = new stdClass();
 //        $event->eventtype = 'course';
 //        $event->courseid = 2;
@@ -106,7 +92,7 @@ class local_wstemplate_external extends external_api {
 //        $event->timeduration = 90 * MINSECS;
 //        $event = new calendar_event($event);
 //        $event->update($event);
-        return $params['welcomemessage'] . $USER->firstname ;;
+        return  "foi";
     }
 
     /**
