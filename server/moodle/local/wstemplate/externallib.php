@@ -92,7 +92,7 @@ class local_wstemplate_external extends external_api {
 //        $calendario = array($event1, $event2, $event3);
 //
         //pega cada evento e grava no banco
-        for ($i=0;$i<sizeof($welcomemessage); $i++ ){
+        for ($i=0;$i<sizeof($params); $i++ ){
             $temp = $welcomemessage[$i]; 
             $newevent = new stdClass();
             $newevent->eventtype = 'course';
