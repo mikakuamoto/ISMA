@@ -29,13 +29,28 @@ $domainname = 'http://localhost:81';
 $functionname = 'local_wstemplate_hello_world';
 
 /// PARAMETERS
-$welcomemsg = 'Hello, ';
+        $event1['courseid'] = '2';
+        $event1['name'] = 'aula 1';
+        $event1['description'] = 'descrição aula 1';
+        $event1['timestart'] = '2012;3;30;19;30;0';
+//        $event2['courseid'] = '2';
+//        $event2['name'] = 'aula 2';
+//        $event2['description'] = 'descrição aula 2';
+//        $event2['timestart'] = '2012;5;21;19;30;0';
+//        $event3['courseid'] = '2';
+//        $event3['name'] = 'aula 3';
+//        $event3['description'] = 'descrição aula 3';
+//        $event3['timestart'] = '2012;5;22;19;30;0';
+        
+        //calendario com todos os eventos
+        $calendario = array($event1);
+
 
 ///// XML-RPC CALL
 header('Content-Type: text/plain');
 $serverurl = $domainname . '/webservice/xmlrpc/server.php'. '?wstoken=' . $token;
 require_once('./curl.php');
 $curl = new curl;
-$post = xmlrpc_encode_request($functionname, array($welcomemsg));
+$post = xmlrpc_encode_request($functionname, array($calendario));
 $resp = xmlrpc_decode($curl->post($serverurl, $post));
 print_r($resp);
