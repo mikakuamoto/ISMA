@@ -30,17 +30,32 @@ class local_wstemplate_external extends external_api {
      * Returns description of method parameters
      * @return external_function_parameters
      */
-    public static function hello_world_parameters() {
+//    public static function hello_world_parameters() {
+//        return new external_function_parameters(
+//                array('welcomemessage' => new external_value(PARAM_TEXT, 'The welcome message. By default it is "Hello world,"', VALUE_DEFAULT, 'Hello world, '))
+//        );
+//    }
+    
+     public static function hello_world_parameters() {
         return new external_function_parameters(
-                array('welcomemessage' => new external_value(PARAM_TEXT, 'The welcome message. By default it is "Hello world,"'))
-        );
+                array('welcomemessage' => new external_multiple_structure(
+                       new external_single_structure(
+                            array(
+                                'courseid' => new external_value(PARAM_TEXT, 'group record id'),
+                                'name' => new external_value(PARAM_TEXT, 'id of course'),
+                                'description' => new external_value(PARAM_TEXT, 'multilang compatible name, course unique'),
+                                'timestart' => new external_value(PARAM_TEXT, 'group description text'),
+                            )
+            ))
+        ));
     }
+
 
     /**
      * Returns welcome message
      * @return string welcome message
      */
-    public static function hello_world($welcomemessage = 'hello') {
+    public static function hello_world($welcomemessage = array()) {
         global $USER;
 
         //Parameter validation
@@ -59,40 +74,38 @@ class local_wstemplate_external extends external_api {
             throw new moodle_exception('cannotviewprofile');
         }
         
-     $string = '<?xml version="1.0" encoding="UTF-8"?>
-                        <calendar>
-                                <event>
-                                        <eventtype>course</eventtype>
-                                        <name>P1</name>
-                                        <description>Primeira prova</description>
-                                </event>
-
-                        </calendar>';
-        
-     $xml = simplexml_load_string($string);
-
-    foreach($xml->event as $event){
-        $newevent = new stdClass();
-        $newevent->eventtype = $event->eventtype;
-        $newevent->courseid = 2;
-        $newevent->name = $event->name;
-        $newevent->description = $event->description;
-        $newevent->timestart = make_timestamp(2012, 4, 29, 19, 30, 0);
-        $newevent->timeduration = 90  * MINSECS;
-        $newevent = new calendar_event($newevent);
-        $newevent->update($newevent);      
-
-    }
-//        $event = new stdClass();
-//        $event->eventtype = 'course';
-//        $event->courseid = 2;
-//        $event->name = 'psicologia';
-//        $event->description = 'evento de curso de psicologia';
-//        $event->timestart = make_timestamp(2012, 3, 21, 21, 15, 0);
-//        $event->timeduration = 90 * MINSECS;
-//        $event = new calendar_event($event);
-//        $event->update($event);
-        return  "foi";
+//        //exemplo de array com eventos
+//        $event1['courseid'] = '2';
+//        $event1['name'] = 'aula 1';
+//        $event1['description'] = 'descrição aula 1';
+//        $event1['timestart'] = '2012;4;20;19;30;0';
+//        $event2['courseid'] = '2';
+//        $event2['name'] = 'aula 2';
+//        $event2['description'] = 'descrição aula 2';
+//        $event2['timestart'] = '2012;4;21;19;30;0';
+//        $event3['courseid'] = '2';
+//        $event3['name'] = 'aula 3';
+//        $event3['description'] = 'descrição aula 3';
+//        $event3['timestart'] = '2012;4;22;19;30;0';
+//        
+//        //calendario com todos os eventos
+//        $calendario = array($event1, $event2, $event3);
+//
+        //pega cada evento e grava no banco
+        for ($i=0;$i<sizeof($welcomemessage); $i++ ){
+            $temp = $welcomemessage[$i]; 
+            $newevent = new stdClass();
+            $newevent->eventtype = 'course';
+            $newevent->courseid = (int)$temp['courseid'];
+            $newevent->name = $temp['name'];
+            $newevent->description = $temp['description'];
+            $timetemp = explode(';', $temp['timestart']);
+            $newevent->timestart = make_timestamp((int)$timetemp[0],(int)$timetemp[1],(int)$timetemp[2],(int)$timetemp[3],(int)$timetemp[4],(int)$timetemp[5]);
+            $newevent->timeduration = 90  * MINSECS;
+            $newevent = new calendar_event($newevent);
+            $newevent->update($newevent); 
+        }
+        return 'foi';
     }
 
     /**
