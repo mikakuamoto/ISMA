@@ -82,4 +82,16 @@ class local_isma_external extends external_api {
     public static function insert_events_returns() {
         return new external_value(PARAM_TEXT, 'Returns a sucess message');
     }
+    
+    public static function update_events_parameters(){
+        
+    }
+    
+    public static function update_events(){
+        
+    }
+    
+    public static function update_events_returns(){
+        return new externa_value(PARAM_TEXT, 'Returns a sucess message');
+    }
 }

@@ -79,6 +79,7 @@ define('HOURMINS', 60);
  */
 define('PARAM_ALPHA',    'alpha');
 
+
 /**
  * PARAM_ALPHAEXT the same contents as PARAM_ALPHA plus the chars in quotes: "_-" allowed
  * NOTE: originally this allowed "/" too, please use PARAM_SAFEPATH if "/" needed
