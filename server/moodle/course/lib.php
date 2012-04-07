@@ -4351,3 +4351,8 @@ function course_page_type_list($pagetype, $parentcontext, $currentcontext) {
         );
     }
 }
+
+function get_course_by_fullname($fullname){
+    global $DB;
+    return $DB->get_record('course', array('fullname' => $fullname));
+}

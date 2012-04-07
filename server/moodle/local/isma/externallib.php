@@ -21,13 +21,13 @@ class local_isma_external extends external_api {
             array('calendar' => new external_multiple_structure(
                                     new external_single_structure(
                                         array(
-                                            'courseid' => new external_value(PARAM_INT, 'Course Id'),
                                             'name' => new external_value(PARAM_TEXT, 'Event Name'),
                                             'description' => new external_value(PARAM_TEXT, 'Event Description'),
                                             'timestart' => new external_value(PARAM_TEXT, 'Event Date'),
                                         )
                                     )
-                                )
+                                ),
+                  'coursefullname' => new external_value (PARAM_TEXT, 'Course Full Name'),
             )
         );
     }
@@ -36,11 +36,12 @@ class local_isma_external extends external_api {
      * Add events into Moodle's calendar.
      * @return String returns a success message
      */
-    public static function insert_events($calendar = array()) {
+    public static function insert_events($calendar, $coursefullname) {
         global $USER;
 
         //Parameter validation
-        $params = self::validate_parameters(self::insert_events_parameters(), array('calendar' => $calendar));
+        $params = self::validate_parameters(self::insert_events_parameters(), 
+                    array('calendar' => $calendar, 'coursefullname' => $coursefullname));
 
         //Context validation
         $context = get_context_instance(CONTEXT_USER, $USER->id);
@@ -51,13 +52,17 @@ class local_isma_external extends external_api {
             throw new moodle_exception('cannotviewprofile');
         }
 
+        //Pega o id do curso
+        $course = get_course_by_fullname($coursefullname);
+        $courseid = $course->id;
+        
         //Add each event into data base
         for ($i = 0; $i < sizeof($calendar); $i++) {
             $temp = $calendar[$i];
             $newevent = new stdClass();
             
             $newevent->eventtype = 'course';
-            $newevent->courseid = $temp['courseid'];
+            $newevent->courseid = $courseid;
             $newevent->name = $temp['name'];
             $newevent->description = $temp['description'];
             
@@ -73,7 +78,7 @@ class local_isma_external extends external_api {
             $newevent->update($newevent);
         }               
         
-        return "O Calendário da disciplina foi atualizado com sucesso!!";
+        return 'O Calendário da disciplina ' . $course->fullname .  ' foi atualizado com sucesso!!';
     }
 
     /**
@@ -90,24 +95,23 @@ class local_isma_external extends external_api {
                 'calendar' => new external_multiple_structure(
                                     new external_single_structure(
                                             array(
-                                                'courseid' => new external_value(PARAM_INT, 'Course Id'), //depois este campo vai sair
                                                 'name' => new external_value(PARAM_TEXT, 'Event name'),
                                                 'description' => new external_value(PARAM_TEXT, 'Event description'),
                                                 'timestart' => new external_value(PARAM_TEXT, 'Event date'),
                                             )
                                     )
                                 ),
-                'course' => new external_value (PARAM_INT, 'Course description'), //agora ta o id depois mudar pra descrição 
-                                                                                   //ja q o cliente nao sabe o id
+                'coursefullname' => new external_value (PARAM_TEXT, 'Course Full Name'),
                 )
         );
     }
     
-    public static function update_events($calendar, $course){
+    public static function update_events($calendar, $coursefullname){
         global $USER;
 
         //Parameter validation
-        $params = self::validate_parameters(self::update_events_parameters(), array('calendar' => $calendar, 'course' => $course));
+        $params = self::validate_parameters(self::update_events_parameters(), 
+                    array('calendar' => $calendar, 'coursefullname' => $coursefullname));
 
         //Context validation
         $context = get_context_instance(CONTEXT_USER, $USER->id);
@@ -119,18 +123,22 @@ class local_isma_external extends external_api {
             throw new moodle_exception('cannotviewprofile');
         }
         
+        //Pega o id do curso
+        $course = get_course_by_fullname($coursefullname);
+        $courseid = $course->id;
+        
         
         //PEGA TODOS OS EVENTOS DO CALENDARIO DE UM CURSO
         //VER COMO FICA ESSA PARTE DE DATA INICIO E FIM
         $events = array();
-        $events = calendar_get_events(make_timestamp(2012,04,03),make_timestamp(2012,05,10),false,false,$course,false,false);
+        $events = calendar_get_events(make_timestamp(2012,04,03),make_timestamp(2012,05,10),false,false,$courseid,false,false);
         
         for ($i = 0; $i < sizeof($calendar); $i++) {
             $temp = $calendar[$i];
             $newevent = new stdClass();
 
             $newevent->eventtype = 'course';
-            $newevent->courseid = $temp['courseid'];
+            $newevent->courseid = $courseid;
             $newevent->name = $temp['name'];
             $newevent->description = $temp['description'];
 
@@ -148,7 +156,7 @@ class local_isma_external extends external_api {
                 }
             }
         }     
-        return 'O Calendario da disciplina foi atualizado com sucesso';
+        return 'O Calendario da disciplina ' . $course->fullname . ' foi atualizado com sucesso';
     }
     
     public static function update_events_returns(){
