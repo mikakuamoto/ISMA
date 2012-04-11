@@ -46,9 +46,11 @@ class local_isma_external extends external_api {
             $newevent->courseid = $courseid;
             $newevent->name = $temp['name'];
             $newevent->description = $temp['description'];
-            $timetemp = explode(';', $temp['timestart']);
-            $newevent->timestart = make_timestamp((int) $timetemp[0], (int) $timetemp[1], (int) $timetemp[2], (int) $timetemp[3], (int) $timetemp[4], (int) $timetemp[5]);
-            $newevent->timeduration = 90 * MINSECS;
+            $timestarttemp = explode(';', $temp['timestart']);
+            $newevent->timestart = make_timestamp((int) $timestarttemp[0], (int) $timestarttemp[1], (int) $timestarttemp[2], (int) $timestarttemp[3], (int) $timestarttemp[4]);
+            $timeendtemp = explode(';', $temp['timedurationuntil']);
+            $newevent->timedurationuntil = make_timestamp((int) $timeendtemp[0], (int) $timeendtemp[1], (int) $timeendtemp[2], (int) $timeendtemp[3], (int) $timeendtemp[4]);
+            $newevent->timeduration = $newevent->timedurationuntil- $newevent->timestart;
             $newevent = new calendar_event($newevent);
             $newevent->update($newevent);
         }              
@@ -107,20 +109,30 @@ class local_isma_external extends external_api {
                 $newevent->description = $temp['description'];
             }
             
-            //Verifica se precisa alterar a data
-            $timetemp = explode(';', $temp['timestart']); 
-            $timestart = make_timestamp((int) $timetemp[0], (int) $timetemp[1], (int) $timetemp[2], (int) $timetemp[3], (int) $timetemp[4], (int) $timetemp[5]);
+            //Verifica se precisa alterar a data de início
+            $timestarttemp = explode(';', $temp['timestart']);
+            $timestart = make_timestamp((int) $timestarttemp[0], (int) $timestarttemp[1], (int) $timestarttemp[2], (int) $timestarttemp[3], (int) $timestarttemp[4]);
             if(($temp['newtimestart']) != ''){
-                $timetemp = explode(';', $temp['newtimestart']);
+                $timestarttemp = explode(';', $temp['newtimestart']);
             }
-            $newevent->timestart = make_timestamp((int) $timetemp[0], (int) $timetemp[1], (int) $timetemp[2], (int) $timetemp[3], (int) $timetemp[4], (int) $timetemp[5]);
-            $newevent->timeduration = 90 * MINSECS;
+            $newevent->timestart = make_timestamp((int) $timestarttemp[0], (int) $timestarttemp[1], (int) $timestarttemp[2], (int) $timestarttemp[3], (int) $timestarttemp[4]);
+            
+            //Verifica se precisa alterar a data de término
+            $timeendtemp = explode(';', $temp['timedurationuntil']);
+            $timedurationuntil = make_timestamp((int) $timeendtemp[0], (int) $timeendtemp[1], (int) $timeendtemp[2], (int) $timeendtemp[3], (int) $timeendtemp[4]);
+            if(($temp['newtimedurationuntil']) != ''){
+                $timeendtemp = explode(';', $temp['newtimedurationuntil']);
+            }
+            $newevent->timedurationuntil = make_timestamp((int) $timeendtemp[0], (int) $timeendtemp[1], (int) $timeendtemp[2], (int) $timeendtemp[3], (int) $timeendtemp[4]);
+            
+            $newevent->timeduration = $newevent->timedurationuntil- $newevent->timestart;
 
             //Compara os eventos passados por parâmetro com os que já estão no calendário pela data do
             //evento, pelo nome e pela descrição, se for igual, pega o id e coloca no novo evento para
             //atualizar.
             foreach ($events as $event){           
-                if($event->name == $temp['name'] && $event->description == $temp['description'] && $event->timestart == $timestart){
+                if($event->name == $temp['name'] && $event->description == $temp['description'] && 
+                        $event->timestart == $timestart && $event->timeduration == $timedurationuntil - $timestart){
                     $newevent->id = $event->id;
                     $newevent = new calendar_event($newevent);
                     $newevent->update($newevent);
@@ -163,19 +175,22 @@ class local_isma_external extends external_api {
         
         for ($i = 0; $i < sizeof($calendar); $i++) {
             $temp = $calendar[$i];
-            $timetemp = explode(';', $temp['timestart']);
-            $timestart = make_timestamp((int) $timetemp[0], (int) $timetemp[1], (int) $timetemp[2], (int) $timetemp[3], (int) $timetemp[4], (int) $timetemp[5]);
-
+            $timestarttemp = explode(';', $temp['timestart']);
+            $timestart = make_timestamp((int) $timestarttemp[0], (int) $timestarttemp[1], (int) $timestarttemp[2], (int) $timestarttemp[3], (int) $timestarttemp[4]);
+            $timeendtemp = explode(';', $temp['timedurationuntil']);
+            $timedurationuntil = make_timestamp((int) $timeendtemp[0], (int) $timeendtemp[1], (int) $timeendtemp[2], (int) $timeendtemp[3], (int) $timeendtemp[4]);
+           
             //Compara os eventos passados por parâmetro com os que já estão no calendário pela data do
             //evento, pelo nome e pela descrição, se for igual, remove.
             foreach ($events as $event){
-                if($event->timestart == $timestart && $event->name == $temp['name'] && $event->description == $temp['description']) {                    
+                if($event->timestart == $timestart && $event->timeduration == $timedurationuntil - $timestart && 
+                        $event->name == $temp['name'] && $event->description == $temp['description']) {                    
                     $event = new calendar_event($event);
                     $event->delete(false);
                 }
             }
         }     
-        return 'Os eventos da disciplina ' . $course->fullname . ' foram deletados com sucesso!!';
+        return 'Os eventos da disciplina ' . $course->fullname . ' foram removidos com sucesso!!';
     }
     
     /**
@@ -187,9 +202,10 @@ class local_isma_external extends external_api {
             array('calendar' => new external_multiple_structure(
                                     new external_single_structure(
                                         array(
-                                            'name' => new external_value(PARAM_TEXT, 'Event Name'),
-                                            'description' => new external_value(PARAM_TEXT, 'Event Description'),
-                                            'timestart' => new external_value(PARAM_TEXT, 'Event Date'),
+                                            'name' => new external_value(PARAM_TEXT, 'Event name'),
+                                            'description' => new external_value(PARAM_TEXT, 'Event description'),
+                                            'timestart' => new external_value(PARAM_TEXT, 'Event start date (YYYY;mm;dd;HH;ii)'),
+                                            'timedurationuntil' => new external_value(PARAM_TEXT, 'Event end date (YYYY;mm;dd;HH;ii)'),
                                         )
                                     )
                                 ),
@@ -210,10 +226,12 @@ class local_isma_external extends external_api {
                                             array(
                                                 'name' => new external_value(PARAM_TEXT, 'Event name'),
                                                 'description' => new external_value(PARAM_TEXT, 'Event description'),
-                                                'timestart' => new external_value(PARAM_TEXT, 'Event date'),
+                                                'timestart' => new external_value(PARAM_TEXT, 'Event start date (YYYY;mm;dd;HH;ii)'),
+                                                'timedurationuntil' => new external_value(PARAM_TEXT, 'Event end date (YYYY;mm;dd;HH;ii)'),
                                                 'newname' => new external_value(PARAM_TEXT, 'Event new name, empty if dont change'),
                                                 'newdescription' => new external_value(PARAM_TEXT, 'Event new description, empty if dont change'),
-                                                'newtimestart' => new external_value(PARAM_TEXT, 'Event new date, empty if dont change'),
+                                                'newtimestart' => new external_value(PARAM_TEXT, 'Event new start date, empty if dont change (YYYY;mm;dd;HH;ii)'),
+                                                'newtimedurationuntil' => new external_value(PARAM_TEXT, 'Event new end date, empty if dont change (YYYY;mm;dd;HH;ii)'),
                                             )
                                     )
                                 ),
@@ -234,7 +252,8 @@ class local_isma_external extends external_api {
                                             array(
                                                 'name' => new external_value(PARAM_TEXT, 'Event name'),
                                                 'description' => new external_value(PARAM_TEXT, 'Event description'),
-                                                'timestart' => new external_value(PARAM_TEXT, 'Event date'),
+                                                'timestart' => new external_value(PARAM_TEXT, 'Event start date (YYYY;mm;dd;HH;ii)'),
+                                                'timedurationuntil' => new external_value(PARAM_TEXT, 'Event end date (YYYY;mm;dd;HH;ii)'),
                                             )
                                     )
                                 ),
