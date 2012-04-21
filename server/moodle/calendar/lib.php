@@ -505,9 +505,7 @@ function calendar_get_upcoming($courses, $groups, $users, $daysinfuture, $maxeve
             }
 
             $event->time = calendar_format_event_time($event, $now, $hrefparams);
-            if (substr($event->name, 0, 4) != 'Aula'){
-                $output[] = $event;
-            }
+            $output[] = $event;
             ++$processed;
         }
     }

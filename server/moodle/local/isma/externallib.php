@@ -16,7 +16,9 @@ class local_isma_external extends external_api {
     /**
      * Add events of a course to its calendar
      * @param array $calendar
-     * @return String returns a success message
+     * @param string $msgforum
+     * @param boolean $flagemail
+     * @return string returns a success message
      */
     public static function insert_events($calendar, $msgforum, $flagemail) {
         global $USER;
@@ -51,24 +53,13 @@ class local_isma_external extends external_api {
             $newevent->update($newevent);
         }   
         
-        //Cria um tópico no fórum de notícias sobre a atualização do calendário
-        $firstevent = $calendar[0];
-        $courseid = $firstevent['courseid'];
-        $forum = forum_get_course_forum($courseid, 'news'); //Procura o Id do fórum de notícias
-        $discussion = new stdClass();
-        $discussion->forum = $forum->id;
-        $discussion->course = $courseid;
-        $discussion->name = 'Atualização do Calendario'; //Título padrão do tópico
-        if ($msgforum != ''){
-            $discussion->message = $msgforum;
-        } else {
-            $discussion->message = 'O Calendario foi alterado'; //Mensagem padrão caso o usuário não mande
+        //Se o parâmetro não estiver vazio, insere uma mensagem no fórum de notícias
+        if($msgforum != ""){
+            $firstevent = $calendar[0];
+            $courseid = $firstevent['courseid'];
+            //Chama o método de inserir tópico no fórum
+            $discussionid = self::insert_msg_into_forum($courseid, $msgforum, $flagemail);
         }
-        $discussion->messageformat = FORMAT_HTML;
-        $discussion->messagetrust = 1;
-        $discussion->mailnow = $flagemail; //Flag para indicar se deseja ou não enviar email aos alunos
-        $discussion->attachments = null;
-        $discussionid = forum_add_discussion($discussion);
         
         return 'Os eventos foram inseridos com sucesso!!';
     }
@@ -76,7 +67,9 @@ class local_isma_external extends external_api {
     /**
      * Update events of a course into its calendar
      * @param array $calendar
-     * @return String returns a success message
+     * @param string $msgforum
+     * @param boolean $flagemail
+     * @return string returns a success message
      */
     public static function update_events($calendar, $msgforum, $flagemail){
         global $USER;
@@ -89,7 +82,7 @@ class local_isma_external extends external_api {
         $context = get_context_instance(CONTEXT_USER, $USER->id);
         self::validate_context($context);
 
-        ///validação da capacidade
+        //Validação da capacidade
         if (!has_capability('moodle/calendar:manageentries', $context)) {
             throw new moodle_exception('nopermissiontoupdatecalendar');
         }
@@ -110,16 +103,7 @@ class local_isma_external extends external_api {
             //Verifica se precisa alterar o nome
             if(($temp['newname']) != ''){
                 $newevent->name = $temp['newname'];
-            } else{
-                $newevent->name = $temp['name'];
-            }
-            
-            //Verifica se precisa alterar a descrição
-            if(($temp['newdescription']) != ''){
-                $newevent->description = $temp['newdescription'];
-            } else{
-                $newevent->description = $temp['description'];
-            }
+            } 
             
             //Verifica se precisa alterar a data de início
             $timestarttemp = explode(';', $temp['timestart']);
@@ -140,34 +124,28 @@ class local_isma_external extends external_api {
             $newevent->timeduration = $newevent->timedurationuntil- $newevent->timestart;
 
             //Compara os eventos passados por parâmetro com os que já estão no calendário pela data do
-            //evento, pelo nome e pela descrição, se for igual, pega o id e coloca no novo evento para
+            //evento e pelo nome, se for igual, pega o id e coloca no novo evento para
             //atualizar.
             foreach ($events as $event){           
-                if($event->name == $temp['name'] && $event->description == $temp['description'] && 
-                        $event->timestart == $timestart && $event->timeduration == $timedurationuntil - $timestart){
+                if($event->name == $temp['name'] && $event->timestart == $timestart && $event->timeduration == $timedurationuntil - $timestart){
                     $newevent->id = $event->id;
+                    //Verifica se precisa alterar a descrição
+                    //Risca a descrição que já existe
+                    if(($temp['newdescription']) != ''){
+                        $olddescr = '<span style="text-decoration: line-through;">'.$event->description.'</span><br />';
+                        $newevent->description = $olddescr.$temp['newdescription'];
+                    }
                     $newevent = new calendar_event($newevent);
                     $newevent->update($newevent);
                 }
             }
         }
         
-        //Cria um tópico no fórum de notícias sobre a atualização do calendário
-        $forum = forum_get_course_forum($courseid, 'news'); //Procura o Id do fórum de notícias
-        $discussion = new stdClass();
-        $discussion->forum = $forum->id;
-        $discussion->course = $courseid;
-        $discussion->name = 'Atualização do Calendario'; //Título padrão do tópico
-        if ($msgforum != ''){
-            $discussion->message = $msgforum;
-        } else {
-            $discussion->message = 'O Calendario foi alterado'; //Mensagem padrão caso o usuário não mande
+        //Se o parâmetro não estiver vazio, insere uma mensagem no fórum de notícias
+        if($msgforum != ""){
+            //Chama o método de inserir tópico no fórum
+            $discussionid = self::insert_msg_into_forum($courseid, $msgforum, $flagemail);
         }
-        $discussion->messageformat = FORMAT_HTML;
-        $discussion->messagetrust = 1;
-        $discussion->mailnow = $flagemail; //Flag para indicar se deseja ou não enviar email aos alunos
-        $discussion->attachments = null;
-        $discussionid = forum_add_discussion($discussion);
         
         return 'Os eventos foram atualizados com sucesso!!';
     }
@@ -175,7 +153,9 @@ class local_isma_external extends external_api {
     /**
      * Remove events of a course from its calendar
      * @param array $calendar
-     * @return String returns a success message
+     * @param string $msgforum
+     * @param boolean $flagemail
+     * @return string returns a success message
      */
     public static function remove_events($calendar, $msgforum, $flagemail){
         global $USER;
@@ -209,32 +189,37 @@ class local_isma_external extends external_api {
             //Compara os eventos passados por parâmetro com os que já estão no calendário pela data do
             //evento, pelo nome e pela descrição, se for igual, remove.
             foreach ($events as $event){
-                if($event->timestart == $timestart && $event->timeduration == $timedurationuntil - $timestart && 
-                        $event->name == $temp['name'] && $event->description == $temp['description']) {                    
+                if($event->timestart == $timestart && $event->timeduration == $timedurationuntil - $timestart && $event->name == $temp['name']) {                    
                     $event = new calendar_event($event);
                     $event->delete(false);
                 }
             }
         }    
         
-        //Cria um tópico no fórum de notícias sobre a atualização do calendário
+        //Se o parâmetro não estiver vazio, insere uma mensagem no fórum de notícias
+        if($msgforum != ""){
+            //Chama o método de inserir tópico no fórum
+            $discussionid = self::insert_msg_into_forum($courseid, $msgforum, $flagemail);
+        }
+        
+        return 'Os eventos foram removidos com sucesso!!';
+    }
+    
+    /**
+     * Insere um tópico no fórum de notícias
+     */
+    private static function insert_msg_into_forum($courseid, $msgforum, $flagemail){
         $forum = forum_get_course_forum($courseid, 'news'); //Procura o Id do fórum de notícias
         $discussion = new stdClass();
         $discussion->forum = $forum->id;
         $discussion->course = $courseid;
         $discussion->name = 'Atualização do Calendario'; //Título padrão do tópico
-        if ($msgforum != ''){
-            $discussion->message = $msgforum;
-        } else {
-            $discussion->message = 'O Calendario foi alterado'; //Mensagem padrão caso o usuário não mande
-        }
+        $discussion->message = $msgforum;
         $discussion->messageformat = FORMAT_HTML;
         $discussion->messagetrust = 1;
         $discussion->mailnow = $flagemail; //Flag para indicar se deseja ou não enviar email aos alunos
         $discussion->attachments = null;
-        $discussionid = forum_add_discussion($discussion);
-        
-        return 'Os eventos foram removidos com sucesso!!';
+        return forum_add_discussion($discussion);
     }
     
     /**
@@ -272,7 +257,6 @@ class local_isma_external extends external_api {
                                             array(
                                                 'courseid' => new external_value(PARAM_TEXT, 'Course Id'),
                                                 'name' => new external_value(PARAM_TEXT, 'Event name'),
-                                                'description' => new external_value(PARAM_TEXT, 'Event description'),
                                                 'timestart' => new external_value(PARAM_TEXT, 'Event start date (YYYY;mm;dd;HH;ii)'),
                                                 'timedurationuntil' => new external_value(PARAM_TEXT, 'Event end date (YYYY;mm;dd;HH;ii)'),
                                                 'newname' => new external_value(PARAM_TEXT, 'Event new name, empty if dont change'),
@@ -300,7 +284,6 @@ class local_isma_external extends external_api {
                                             array(
                                                 'courseid' => new external_value(PARAM_TEXT, 'Course Id'),
                                                 'name' => new external_value(PARAM_TEXT, 'Event name'),
-                                                'description' => new external_value(PARAM_TEXT, 'Event description'),
                                                 'timestart' => new external_value(PARAM_TEXT, 'Event start date (YYYY;mm;dd;HH;ii)'),
                                                 'timedurationuntil' => new external_value(PARAM_TEXT, 'Event end date (YYYY;mm;dd;HH;ii)'),
                                             )
