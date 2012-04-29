@@ -99,42 +99,24 @@ class local_isma_external extends external_api {
             $newevent = new stdClass();
             $newevent->eventtype = 'course'; //Tipo do evento
             $newevent->courseid = $temp['courseid'];
+            $newevent->name = $temp['name'];
+            $newevent->description = $temp['description'];
             
-            //Verifica se precisa alterar o nome
-            if(($temp['newname']) != ''){
-                $newevent->name = $temp['newname'];
-            } 
-            
-            //Verifica se precisa alterar a data de início
             $timestarttemp = explode(';', $temp['timestart']);
             $timestart = make_timestamp((int) $timestarttemp[0], (int) $timestarttemp[1], (int) $timestarttemp[2], (int) $timestarttemp[3], (int) $timestarttemp[4]);
-            if(($temp['newtimestart']) != ''){
-                $timestarttemp = explode(';', $temp['newtimestart']);
-            }
-            $newevent->timestart = make_timestamp((int) $timestarttemp[0], (int) $timestarttemp[1], (int) $timestarttemp[2], (int) $timestarttemp[3], (int) $timestarttemp[4]);
+            $newevent->timestart = $timestart;
             
-            //Verifica se precisa alterar a data de término
             $timeendtemp = explode(';', $temp['timedurationuntil']);
             $timedurationuntil = make_timestamp((int) $timeendtemp[0], (int) $timeendtemp[1], (int) $timeendtemp[2], (int) $timeendtemp[3], (int) $timeendtemp[4]);
-            if(($temp['newtimedurationuntil']) != ''){
-                $timeendtemp = explode(';', $temp['newtimedurationuntil']);
-            }
-            $newevent->timedurationuntil = make_timestamp((int) $timeendtemp[0], (int) $timeendtemp[1], (int) $timeendtemp[2], (int) $timeendtemp[3], (int) $timeendtemp[4]);
+            $newevent->timedurationuntil = $timedurationuntil;
             
             $newevent->timeduration = $newevent->timedurationuntil- $newevent->timestart;
 
             //Compara os eventos passados por parâmetro com os que já estão no calendário pela data do
-            //evento e pelo nome, se for igual, pega o id e coloca no novo evento para
-            //atualizar.
+            //evento se for igual, pega o id e coloca no novo evento para atualizar.
             foreach ($events as $event){           
-                if($event->name == $temp['name'] && $event->timestart == $timestart && $event->timeduration == $timedurationuntil - $timestart){
+                if($event->timestart == $timestart && $event->timeduration == $timedurationuntil - $timestart){
                     $newevent->id = $event->id;
-                    //Verifica se precisa alterar a descrição
-                    //Risca a descrição que já existe
-                    if(($temp['newdescription']) != ''){
-                        $olddescr = '<span style="text-decoration: line-through;">'.$event->description.'</span><br />';
-                        $newevent->description = $olddescr.$temp['newdescription'];
-                    }
                     $newevent = new calendar_event($newevent);
                     $newevent->update($newevent);
                 }
@@ -208,18 +190,34 @@ class local_isma_external extends external_api {
     /**
      * Insere um tópico no fórum de notícias
      */
-    private static function insert_msg_into_forum($courseid, $msgforum, $flagemail){
+    private static function insert_msg_into_forum($courseid, $msgforum, $flagemail){  
+        global $USER;
+        
         $forum = forum_get_course_forum($courseid, 'news'); //Procura o Id do fórum de notícias
-        $discussion = new stdClass();
-        $discussion->forum = $forum->id;
-        $discussion->course = $courseid;
-        $discussion->name = 'Atualização do Calendario'; //Título padrão do tópico
-        $discussion->message = $msgforum;
-        $discussion->messageformat = FORMAT_HTML;
-        $discussion->messagetrust = 1;
-        $discussion->mailnow = $flagemail; //Flag para indicar se deseja ou não enviar email aos alunos
-        $discussion->attachments = null;
-        return forum_add_discussion($discussion);
+        
+        //Procura o tópico pelo nome e pelo autor
+        $post = forum_get_discussion_byname('Atualização dos Eventos', $forum->id,  $USER->id);
+        
+        if($post != 0){ //Tópico existe, será criado uma resposta
+            $reply = new stdClass();
+            $reply->discussion = $post->id;
+            $reply->subject = 'RE: '.$post->name;
+            $reply->parent = $post->id;
+            $reply->message = $msgforum;
+            $reply->mailnow = $flagemail; //Flag para indicar se deseja ou não enviar email aos alunos
+            return forum_add_new_post($reply);
+        } else { //Tópico não existe, então será criado
+            $discussion = new stdClass();
+            $discussion->forum = $forum->id;
+            $discussion->course = $courseid;
+            $discussion->name = 'Atualização dos Eventos'; //Título padrão do tópico
+            $discussion->message = $msgforum;
+            $discussion->messageformat = FORMAT_HTML;
+            $discussion->messagetrust = 1;
+            $discussion->mailnow = $flagemail; //Flag para indicar se deseja ou não enviar email aos alunos
+            $discussion->attachments = null;
+            return forum_add_discussion($discussion);
+        }
     }
     
     /**
@@ -257,12 +255,9 @@ class local_isma_external extends external_api {
                                             array(
                                                 'courseid' => new external_value(PARAM_TEXT, 'Course Id'),
                                                 'name' => new external_value(PARAM_TEXT, 'Event name'),
+                                                'description' => new external_value(PARAM_TEXT, 'Event description'),
                                                 'timestart' => new external_value(PARAM_TEXT, 'Event start date (YYYY;mm;dd;HH;ii)'),
                                                 'timedurationuntil' => new external_value(PARAM_TEXT, 'Event end date (YYYY;mm;dd;HH;ii)'),
-                                                'newname' => new external_value(PARAM_TEXT, 'Event new name, empty if dont change'),
-                                                'newdescription' => new external_value(PARAM_TEXT, 'Event new description, empty if dont change'),
-                                                'newtimestart' => new external_value(PARAM_TEXT, 'Event new start date, empty if dont change (YYYY;mm;dd;HH;ii)'),
-                                                'newtimedurationuntil' => new external_value(PARAM_TEXT, 'Event new end date, empty if dont change (YYYY;mm;dd;HH;ii)'),
                                             )
                                     )
                                 ),
@@ -284,6 +279,7 @@ class local_isma_external extends external_api {
                                             array(
                                                 'courseid' => new external_value(PARAM_TEXT, 'Course Id'),
                                                 'name' => new external_value(PARAM_TEXT, 'Event name'),
+                                                'description' => new external_value(PARAM_TEXT, 'Event description'),
                                                 'timestart' => new external_value(PARAM_TEXT, 'Event start date (YYYY;mm;dd;HH;ii)'),
                                                 'timedurationuntil' => new external_value(PARAM_TEXT, 'Event end date (YYYY;mm;dd;HH;ii)'),
                                             )

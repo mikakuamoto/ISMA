@@ -8159,3 +8159,14 @@ function forum_get_posts_by_user($user, array $courses, $musthaveaccess = false,
 
     return $return;
 }
+ 
+function forum_get_discussion_byname($name, $forumid, $userid) {
+    global $DB;
+    
+    $discussion = $DB->get_record('forum_discussions', array('name'=>$name, 'forum'=>$forumid, 'userid'=>$userid), '*');
+    if(is_null($discussion)){
+        return 0;
+    } else {
+        return $discussion;
+    }
+}
