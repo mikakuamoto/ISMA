@@ -683,19 +683,7 @@ function calendar_get_events($tstart, $tend, $users, $groups, $courses, $withdur
     }
     return $events;
 }
-
-function calendar_get_events_by_course($courseid) {
-    global $DB;
-
-    $whereclause = 'courseid = '.$courseid;
-
-    $events = $DB->get_records_select('event', $whereclause, null, 'timestart');
-    if ($events === false) {
-        $events = array();
-    }
-    return $events;
-}
-    
+ 
 function calendar_top_controls($type, $data) {
     global $CFG;
     $content = '';

@@ -8,8 +8,8 @@
  */
 require_once($CFG->libdir . "/externallib.php");
 require_once($CFG->dirroot . '/calendar/lib.php');
-require_once($CFG->dirroot . '/course/lib.php');
 require_once($CFG->dirroot . '/mod/forum/lib.php');
+require_once($CFG->dirroot . '/local/isma/lib.php');
 
 class local_isma_external extends external_api {
     
