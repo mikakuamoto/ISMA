@@ -1,20 +1,21 @@
 <?php
 
 /**
- * Web service local plugin isma external functions and service definitions.
+ * Plugin local web service ISMA  
+ * Definições das funções externas e do serviço
  *
- * @package		localwsisma
- * @author		Mika Kuamoto - Paulo Silveira  
+ * @package	localwsisma
+ * @author	Mika Kuamoto - Paulo Silveira
  * 
  */
 
-// Web service functions to install.
+// Funções do web service
 $functions = array(
         'local_isma_insert_events' => array(
                 'classname'   => 'local_isma_external',
                 'methodname'  => 'insert_events',
                 'classpath'   => 'local/isma/externallib.php',
-                'description' => 'Add events of a course to its calendar',
+                'description' => 'Adiciona eventos de um curso ao seu calendário',
                 'capabilities'=> 'moodle/calendar:manageentries',
                 'type'        => 'write',
         ),
@@ -22,7 +23,7 @@ $functions = array(
                 'classname'   => 'local_isma_external',
                 'methodname'  => 'update_events',
                 'classpath'   => 'local/isma/externallib.php',
-                'description' => 'Update events of a course into its calendar',
+                'description' => 'Atualiza eventos do calendário de um curso',
                 'capabilities'=> 'moodle/calendar:manageentries',
                 'type'        => 'write',
         ),
@@ -30,13 +31,13 @@ $functions = array(
                 'classname'   => 'local_isma_external',
                 'methodname'  => 'remove_events',
                 'classpath'   => 'local/isma/externallib.php',
-                'description' => 'Remove events of a course from its calendar',
+                'description' => 'Remove eventos de um curso do seu calendário',
                 'capabilities'=> 'moodle/calendar:manageentries',
                 'type'        => 'write',
         ),
 );
 
-// Services to install as pre-build services.
+// Serviços
 $services = array(
         'ISMA' => array(
                 'functions' => array (

@@ -1,10 +1,11 @@
 <?php
 
 /**
- * Web service local plugin isma related strings
+ * Plugin local web service ISMA 
+ * Strings Relacionadas - Linguagem en
  *
- * @package   localwsisma
- * @author    Mika Kuamoto - Paulo Silveira
+ * @package	localwsisma
+ * @author	Mika Kuamoto - Paulo Silveira
  */
 
 $string['pluginname'] = 'Web service Isma';

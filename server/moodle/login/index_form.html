@@ -37,7 +37,7 @@ if (empty($CFG->xmlstrictheaders) and !empty($CFG->loginpasswordautocomplete)) {
         ?>
         <form action="<?php echo $CFG->httpswwwroot; ?>/login/index.php" method="post" id="login" <?php echo $autocomplete; ?> >
           <div class="loginform">
-            <div class="form-label"><label for="username">estou testando o programa</label></div>
+            <div class="form-label"><label for="username"><?php print_string("username") ?></label></div>
             <div class="form-input">
               <input type="text" name="username" id="username" size="15" value="<?php p($frm->username) ?>" />
             </div>

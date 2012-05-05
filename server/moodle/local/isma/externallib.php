@@ -1,31 +1,34 @@
 <?php
 
 /**
- * Web service local plugin isma external functions implementation.
+ * Plugin local web service ISMA
+ * Implementação das funções externas
  *
- * @package		localwsisma
- * @author		Mika Kuamoto - Paulo Silveira  
+ * @package	localwsisma
+ * @author	Mika Kuamoto - Paulo Silveira 
  */
+
 require_once($CFG->libdir . "/externallib.php");
 require_once($CFG->dirroot . '/calendar/lib.php');
-require_once($CFG->dirroot . '/mod/forum/lib.php');
 require_once($CFG->dirroot . '/local/isma/lib.php');
 
 class local_isma_external extends external_api {
     
     /**
-     * Add events of a course to its calendar
+     * Adiciona eventos de um curso ao seu calendário
      * @param array $calendar
+     * @param int $courseid
      * @param string $msgforum
      * @param boolean $flagemail
-     * @return string returns a success message
+     * @return string retorna uma mensagem de sucesso
      */
-    public static function insert_events($calendar, $msgforum, $flagemail) {
+    public static function insert_events($calendar, $courseid, $msgforum, $flagemail) {
         global $USER;
 
         //Validação dos parâmetros
         $params = self::validate_parameters(self::insert_events_parameters(), 
-                    array('calendar' => $calendar, 'msgforum' => $msgforum, 'flagemail' => $flagemail));
+                    array('calendar' => $calendar, 'courseid' => $courseid, 
+                            'msgforum' => $msgforum, 'flagemail' => $flagemail));
 
         //Validação do contexto
         $context = get_context_instance(CONTEXT_USER, $USER->id);
@@ -41,7 +44,7 @@ class local_isma_external extends external_api {
             $temp = $calendar[$i];
             $newevent = new stdClass();
             $newevent->eventtype = 'course'; //Tipo do evento
-            $newevent->courseid = $temp['courseid'];
+            $newevent->courseid = $courseid;
             $newevent->name = $temp['name'];
             $newevent->description = $temp['description'];
             $timestarttemp = explode(';', $temp['timestart']);
@@ -55,28 +58,28 @@ class local_isma_external extends external_api {
         
         //Se o parâmetro não estiver vazio, insere uma mensagem no fórum de notícias
         if($msgforum != ""){
-            $firstevent = $calendar[0];
-            $courseid = $firstevent['courseid'];
             //Chama o método de inserir tópico no fórum
-            $discussionid = self::insert_msg_into_forum($courseid, $msgforum, $flagemail);
+            $discussionid = local_isma_insert_msg_into_forum($courseid, $msgforum, $flagemail);
         }
         
         return 'Os eventos foram inseridos com sucesso!!';
     }
     
     /**
-     * Update events of a course into its calendar
+     * Atualiza eventos do calendário de um curso 
      * @param array $calendar
+     * @param int $courseid
      * @param string $msgforum
      * @param boolean $flagemail
-     * @return string returns a success message
+     * @return string retorna uma mensagem de sucesso
      */
-    public static function update_events($calendar, $msgforum, $flagemail){
+    public static function update_events($calendar, $courseid, $msgforum, $flagemail){
         global $USER;
 
         //Validação dos parâmetros
         $params = self::validate_parameters(self::update_events_parameters(), 
-                    array('calendar' => $calendar, 'msgforum' => $msgforum, 'flagemail' => $flagemail));
+                    array('calendar' => $calendar, 'courseid' => $courseid, 
+                            'msgforum' => $msgforum, 'flagemail' => $flagemail));
 
         //Validação do contexto
         $context = get_context_instance(CONTEXT_USER, $USER->id);
@@ -87,18 +90,16 @@ class local_isma_external extends external_api {
             throw new moodle_exception('nopermissiontoupdatecalendar');
         }
         
-        //Pega todos os eventos do calendário do curso        
-        $firstevent = $calendar[0];
-        $courseid = $firstevent['courseid'];
+        //Pega todos os eventos do calendário do curso     
         $events = array();
-        $events = calendar_get_events_by_course($courseid);
+        $events = local_isma_get_events_by_course($courseid);
         
         //Atualiza os eventos
         for ($i = 0; $i < sizeof($calendar); $i++) {
             $temp = $calendar[$i];
             $newevent = new stdClass();
             $newevent->eventtype = 'course'; //Tipo do evento
-            $newevent->courseid = $temp['courseid'];
+            $newevent->courseid = $courseid;
             $newevent->name = $temp['name'];
             $newevent->description = $temp['description'];
             
@@ -126,25 +127,27 @@ class local_isma_external extends external_api {
         //Se o parâmetro não estiver vazio, insere uma mensagem no fórum de notícias
         if($msgforum != ""){
             //Chama o método de inserir tópico no fórum
-            $discussionid = self::insert_msg_into_forum($courseid, $msgforum, $flagemail);
+            $discussionid = local_isma_insert_msg_into_forum($courseid, $msgforum, $flagemail);
         }
         
         return 'Os eventos foram atualizados com sucesso!!';
     }
     
     /**
-     * Remove events of a course from its calendar
+     * Remove eventos de um curso do seu calendário
      * @param array $calendar
+     * @param int $courseid
      * @param string $msgforum
      * @param boolean $flagemail
-     * @return string returns a success message
+     * @return string retorna uma mensagem de sucesso
      */
-    public static function remove_events($calendar, $msgforum, $flagemail){
+    public static function remove_events($calendar, $courseid, $msgforum, $flagemail){
         global $USER;
 
         //Validação dos parâmetros
         $params = self::validate_parameters(self::remove_events_parameters(), 
-                    array('calendar' => $calendar, 'msgforum' => $msgforum, 'flagemail' => $flagemail));
+                    array('calendar' => $calendar, 'courseid' => $courseid, 
+                            'msgforum' => $msgforum, 'flagemail' => $flagemail));
 
         //Validação do contexto
         $context = get_context_instance(CONTEXT_USER, $USER->id);
@@ -156,10 +159,8 @@ class local_isma_external extends external_api {
         }
         
         //Pega todos os eventos do calendário do curso
-        $firstevent = $calendar[0];
-        $courseid = $firstevent['courseid'];
         $events = array();
-        $events = calendar_get_events_by_course($courseid);
+        $events = local_isma_get_events_by_course($courseid);
         
         for ($i = 0; $i < sizeof($calendar); $i++) {
             $temp = $calendar[$i];
@@ -169,7 +170,7 @@ class local_isma_external extends external_api {
             $timedurationuntil = make_timestamp((int) $timeendtemp[0], (int) $timeendtemp[1], (int) $timeendtemp[2], (int) $timeendtemp[3], (int) $timeendtemp[4]);
            
             //Compara os eventos passados por parâmetro com os que já estão no calendário pela data do
-            //evento, pelo nome e pela descrição, se for igual, remove.
+            //evento e pelo nome, se for igual, remove.
             foreach ($events as $event){
                 if($event->timestart == $timestart && $event->timeduration == $timedurationuntil - $timestart && $event->name == $temp['name']) {                    
                     $event = new calendar_event($event);
@@ -181,70 +182,38 @@ class local_isma_external extends external_api {
         //Se o parâmetro não estiver vazio, insere uma mensagem no fórum de notícias
         if($msgforum != ""){
             //Chama o método de inserir tópico no fórum
-            $discussionid = self::insert_msg_into_forum($courseid, $msgforum, $flagemail);
+            $discussionid = local_isma_insert_msg_into_forum($courseid, $msgforum, $flagemail);
         }
         
         return 'Os eventos foram removidos com sucesso!!';
     }
     
     /**
-     * Insere um tópico no fórum de notícias
-     */
-    private static function insert_msg_into_forum($courseid, $msgforum, $flagemail){  
-        global $USER;
-        
-        $forum = forum_get_course_forum($courseid, 'news'); //Procura o Id do fórum de notícias
-        
-        //Procura o tópico pelo nome e pelo autor
-        $post = forum_get_discussion_byname('Atualização dos Eventos', $forum->id,  $USER->id);
-        
-        if($post != 0){ //Tópico existe, será criado uma resposta
-            $reply = new stdClass();
-            $reply->discussion = $post->id;
-            $reply->subject = 'RE: '.$post->name;
-            $reply->parent = $post->id;
-            $reply->message = $msgforum;
-            $reply->mailnow = $flagemail; //Flag para indicar se deseja ou não enviar email aos alunos
-            return forum_add_new_post($reply);
-        } else { //Tópico não existe, então será criado
-            $discussion = new stdClass();
-            $discussion->forum = $forum->id;
-            $discussion->course = $courseid;
-            $discussion->name = 'Atualização dos Eventos'; //Título padrão do tópico
-            $discussion->message = $msgforum;
-            $discussion->messageformat = FORMAT_HTML;
-            $discussion->messagetrust = 1;
-            $discussion->mailnow = $flagemail; //Flag para indicar se deseja ou não enviar email aos alunos
-            $discussion->attachments = null;
-            return forum_add_discussion($discussion);
-        }
-    }
-    
-    /**
-     * Returns description of method parameters
+     * Retorna a descrição dos parâmetros do método
      * @return external_function_parameters
      */
     public static function insert_events_parameters() {
         return new external_function_parameters(
-            array('calendar' => new external_multiple_structure(
+            array(
+                'calendar' => new external_multiple_structure(
                                     new external_single_structure(
-                                        array(
-                                            'courseid' => new external_value(PARAM_TEXT, 'Course Id'),
-                                            'name' => new external_value(PARAM_TEXT, 'Event name'),
-                                            'description' => new external_value(PARAM_TEXT, 'Event description'),
-                                            'timestart' => new external_value(PARAM_TEXT, 'Event start date (YYYY;mm;dd;HH;ii)'),
-                                            'timedurationuntil' => new external_value(PARAM_TEXT, 'Event end date (YYYY;mm;dd;HH;ii)'),
-                                        )
+                                            array(
+                                                'name' => new external_value(PARAM_TEXT, 'Nome do evento'),
+                                                'description' => new external_value(PARAM_TEXT, 'Descrição do evento'),
+                                                'timestart' => new external_value(PARAM_TEXT, 'Data e hora início do evento (YYYY;mm;dd;HH;ii)'),
+                                                'timedurationuntil' => new external_value(PARAM_TEXT, 'Data e hora final do evento (YYYY;mm;dd;HH;ii)'),
+                                            )
                                     )
                                 ),
-                'msgforum' => new external_value(PARAM_TEXT, 'Forum message'),
-                'flagemail' => new external_value(PARAM_BOOL, 'Send email'),
-            )
+                'courseid' => new external_value(PARAM_INT, 'Identificador do curso'),
+                'msgforum' => new external_value(PARAM_TEXT, 'Mensagem do fórum'),
+                'flagemail' => new external_value(PARAM_BOOL, 'Enviar email'),
+                )
         );
     }
     
     /**
-     * Returns description of method parameters
+     * Retorna a descrição dos parâmetros do método
      * @return external_function_parameters
      */
     public static function update_events_parameters(){
@@ -253,22 +222,22 @@ class local_isma_external extends external_api {
                 'calendar' => new external_multiple_structure(
                                     new external_single_structure(
                                             array(
-                                                'courseid' => new external_value(PARAM_TEXT, 'Course Id'),
-                                                'name' => new external_value(PARAM_TEXT, 'Event name'),
-                                                'description' => new external_value(PARAM_TEXT, 'Event description'),
-                                                'timestart' => new external_value(PARAM_TEXT, 'Event start date (YYYY;mm;dd;HH;ii)'),
-                                                'timedurationuntil' => new external_value(PARAM_TEXT, 'Event end date (YYYY;mm;dd;HH;ii)'),
+                                                'name' => new external_value(PARAM_TEXT, 'Nome do evento'),
+                                                'description' => new external_value(PARAM_TEXT, 'Descrição do evento'),
+                                                'timestart' => new external_value(PARAM_TEXT, 'Data e hora início do evento (YYYY;mm;dd;HH;ii)'),
+                                                'timedurationuntil' => new external_value(PARAM_TEXT, 'Data e hora final do evento (YYYY;mm;dd;HH;ii)'),
                                             )
                                     )
                                 ),
-                'msgforum' => new external_value(PARAM_TEXT, 'Forum message'),
-                'flagemail' => new external_value(PARAM_BOOL, 'Send email'),
+                'courseid' => new external_value(PARAM_INT, 'Identificador do curso'),
+                'msgforum' => new external_value(PARAM_TEXT, 'Mensagem do fórum'),
+                'flagemail' => new external_value(PARAM_BOOL, 'Enviar email'),
                 )
         );
     }
     
     /**
-     * Returns description of method parameters
+     * Retorna a descrição dos parâmetros do método
      * @return external_function_parameters
      */
     public static function remove_events_parameters(){
@@ -277,41 +246,41 @@ class local_isma_external extends external_api {
                 'calendar' => new external_multiple_structure(
                                     new external_single_structure(
                                             array(
-                                                'courseid' => new external_value(PARAM_TEXT, 'Course Id'),
-                                                'name' => new external_value(PARAM_TEXT, 'Event name'),
-                                                'description' => new external_value(PARAM_TEXT, 'Event description'),
-                                                'timestart' => new external_value(PARAM_TEXT, 'Event start date (YYYY;mm;dd;HH;ii)'),
-                                                'timedurationuntil' => new external_value(PARAM_TEXT, 'Event end date (YYYY;mm;dd;HH;ii)'),
+                                                'name' => new external_value(PARAM_TEXT, 'Nome do evento'),
+                                                'description' => new external_value(PARAM_TEXT, 'Descrição do evento'),
+                                                'timestart' => new external_value(PARAM_TEXT, 'Data e hora início do evento (YYYY;mm;dd;HH;ii)'),
+                                                'timedurationuntil' => new external_value(PARAM_TEXT, 'Data e hora final do evento (YYYY;mm;dd;HH;ii)'),
                                             )
                                     )
                                 ),
-                'msgforum' => new external_value(PARAM_TEXT, 'Forum message'),
-                'flagemail' => new external_value(PARAM_BOOL, 'Send email'),
+                'courseid' => new external_value(PARAM_INT, 'Identificador do curso'),
+                'msgforum' => new external_value(PARAM_TEXT, 'Mensagem do fórum'),
+                'flagemail' => new external_value(PARAM_BOOL, 'Enviar email'),
                 )
         );
     }
     
     /**
-     * Returns description of method result value
+     * Retorna a descrição do resultado do método
      * @return external_description
      */
     public static function insert_events_returns() {
-        return new external_value(PARAM_TEXT, 'Returns a sucess message');
+        return new external_value(PARAM_TEXT, 'Retorna uma mensagem de sucesso');
     }
     
     /**
-     * Returns description of method result value
+     * Retorna a descrição do resultado do método
      * @return external_description
      */
     public static function update_events_returns(){
-        return new external_value(PARAM_TEXT, 'Returns a sucess message');
+        return new external_value(PARAM_TEXT, 'Retorna uma mensagem de sucesso');
     }
     
     /**
-     * Returns description of method result value
+     * Retorna a descrição do resultado do método
      * @return external_description
      */
     public static function remove_events_returns(){
-        return new external_value(PARAM_TEXT, 'Returns a sucess message');
+        return new external_value(PARAM_TEXT, 'Retorna uma mensagem de sucesso');
     }
 }

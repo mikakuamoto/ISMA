@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * Bloco My Events ISMA  
+ * Bloco e Funções
+ *
+ * @package	block
+ * @subpackage  my_events_isma
+ * @author	Mika Kuamoto - Paulo Silveira
+ */
+
 class block_my_events_isma extends block_base {
     function init() {
         $this->title = get_string('pluginname', 'block_my_events_isma');
@@ -19,7 +28,7 @@ class block_my_events_isma extends block_base {
         $this->content->text = '';
 
         $filtercourse    = array();
-        if (empty($this->instance)) { // Overrides: use no course at all
+        if (empty($this->instance)) { 
             $courseshown = false;
             $this->content->footer = '';
 
@@ -35,11 +44,8 @@ class block_my_events_isma extends block_base {
                                            get_string('newevent', 'calendar').'</a>...</div>';
             }
             if ($courseshown == SITEID) {
-                // Being displayed at site level. This will cause the filter to fall back to auto-detecting
-                // the list of courses it will be grabbing events from.
                 $filtercourse = calendar_get_default_courses();
             } else {
-                // Forcibly filter events to include only those from the particular course we are in.
                 $filtercourse = array($courseshown => $this->page->course);
             }
         }
@@ -89,13 +95,12 @@ class block_my_events_isma extends block_base {
         }
 
         for ($i = 0; $i < $lines; ++$i) {
-            if (!isset($events[$i]->time)) {   // Just for robustness
+            if (!isset($events[$i]->time)) {   
                 continue;
             }
             $events[$i] = $this->block_my_events_isma_add_event_metadata($events[$i]);
             $content .= '<div class="event"><span class="icon c0">'.$events[$i]->icon.'</span> ';
             if (!empty($events[$i]->referer)) {
-                // That's an activity event, so let's provide the hyperlink
                 $content .= $events[$i]->referer;
             } else {
                 if(!empty($linkhref)) {
@@ -118,14 +123,10 @@ class block_my_events_isma extends block_base {
 
     function block_my_events_isma_add_event_metadata($event) {
         global $CFG, $OUTPUT;
-
-        //Support multilang in event->name
+      
         $event->name = format_string($event->name,true);
 
-        if(!empty($event->modulename)) {                                // Activity event
-            // The module name is set. I will assume that it has to be displayed, and
-            // also that it is an automatically-generated event. And of course that the
-            // fields for get_coursemodule_from_instance are set correctly.
+        if(!empty($event->modulename)) {    
             $module = calendar_get_module_cached($coursecache, $event->modulename, $event->instance);
 
             if ($module === false) {
@@ -134,7 +135,6 @@ class block_my_events_isma extends block_base {
 
             $modulename = get_string('modulename', $event->modulename);
             if (get_string_manager()->string_exists($event->eventtype, $event->modulename)) {
-                // will be used as alt text if the event icon
                 $eventtype = get_string($event->eventtype, $event->modulename);
             } else {
                 $eventtype = '';
@@ -150,10 +150,10 @@ class block_my_events_isma extends block_base {
             $event->cmid = $module->id;
 
 
-        } else if($event->courseid == SITEID) {                              // Site event
+        } else if($event->courseid == SITEID) {                              
             $event->icon = '<img height="16" width="16" src="'.$OUTPUT->pix_url('c/site') . '" alt="'.get_string('globalevent', 'calendar').'" style="vertical-align: middle;" />';
             $event->cssclass = 'calendar_event_global';
-        } else if($event->courseid != 0 && $event->courseid != SITEID && $event->groupid == 0) {          // Course event
+        } else if($event->courseid != 0 && $event->courseid != SITEID && $event->groupid == 0) {          
             calendar_get_course_cached($coursecache, $event->courseid);
 
             $context = get_context_instance(CONTEXT_COURSE, $event->courseid);
@@ -166,10 +166,10 @@ class block_my_events_isma extends block_base {
             }
             $event->courselink = '<a href="'.$CFG->wwwroot.'/course/view.php?id='.$event->courseid.'">'.$fullname.'</a>';
             $event->cssclass = 'calendar_event_course';
-        } else if ($event->groupid) {                                    // Group event
+        } else if ($event->groupid) {                                    
             $event->icon = '<img height="16" width="16" src="'.$OUTPUT->pix_url('c/group') . '" alt="'.get_string('groupevent', 'calendar').'" style="vertical-align: middle;" />';
             $event->cssclass = 'calendar_event_group';
-        } else if($event->userid) {                                      // User event
+        } else if($event->userid) {                                      
             $event->icon = '<img height="16" width="16" src="'.$OUTPUT->pix_url('c/user') . '" alt="'.get_string('userevent', 'calendar').'" style="vertical-align: middle;" />';
             $event->cssclass = 'calendar_event_user';
         }

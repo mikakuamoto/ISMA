@@ -1,10 +1,13 @@
 <?php
 
 /**
- * Web service local plugin isma version.
+ * Plugin local web service ISMA 
+ * Versão
  *
- *@author Mika Kuamoto - Paulo Silveira 
+ * @package	localwsisma
+ * @author	Mika Kuamoto - Paulo Silveira
  */
-$plugin->version  = 2012040700;   
-$plugin->requires = 2010112400;  // Requires this Moodle version - at least 2.0
+
+$plugin->version  = 2012040700;  //Versão do plugin
+$plugin->requires = 2010112400;  //Versão do Moodle necessária 
 $plugin->maturity = MATURITY_ALPHA;
