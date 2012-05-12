@@ -45,29 +45,61 @@ public class XmlRpcIsmaClient {
     public static void main(String[] args) throws MalformedURLException, XmlRpcException {
 
         /// NEED TO BE CHANGED
-        String token = "bf59c1d0a252d1dc36a2bc5dd929f63d";
+        String token = "af8d6043bce0fe2908659c1b208a7263";
         String domainName = "http://localhost:81";
 
         /// PARAMETERS - NEED TO BE CHANGED IF YOU CALL A DIFFERENT FUNCTION
-        String functionName = "local_wstemplate_hello_world";
+        String functionName = "local_isma_remove_events";
         
-        Hashtable event1 = new Hashtable();
-        event1.put("courseid", "2");
-        event1.put("name", "aula 1");
-        event1.put("description", "desc aula 1");
-        event1.put("timestart", "2012;3;26;19;30;0");
+        //PARA O INSERT
+//        Hashtable event1 = new Hashtable();
+//        event1.put("courseid", "2");
+//        event1.put("name", "evento 1");
+//        event1.put("description", "Exercício Prático");
+//        event1.put("timestart", "2012;4;11;19;30");
+//        event1.put("timedurationuntil", "2012;4;11;20;00");
         Hashtable event2 = new Hashtable();
-        event2.put("courseid", "2");
-        event2.put("name", "aula 2");
-        event2.put("description", "desc aula 2");
-        event2.put("timestart", "2012;3;27;19;30;0");
-        Hashtable event3 = new Hashtable();
-        event3.put("courseid", "2");
-        event3.put("name", "aula 3");
-        event3.put("description", "desc aula 3");
-        event3.put("timestart", "2012;3;28;19;30;0");
+        event2.put("name", "Aula - Laboratório 315");
+        event2.put("description", "Aula Prática");
+        event2.put("timestart", "2012;5;7;04;30");
+        event2.put("timedurationuntil", "2012;5;7;05;00");
+//        event2.put("newname", "Aula - Laboratório 206");
+//        event2.put("newdescription", "Exercício Prático");
+//        event2.put("newtimestart", "");
+//        event2.put("newtimedurationuntil", "");
+//        Hashtable event3 = new Hashtable();
+//        event3.put("courseid", "2");
+//        event3.put("name", "Prova");
+//        event3.put("description", "prova 2");
+//        event3.put("timestart", "2012;4;28;19;30;0");
+//        event3.put("timedurationuntil", "2012;4;28;21;00");
+//        
+//        Hashtable event3 = new Hashtable();
+//        event3.put("courseid", "2");
+//        event3.put("name", "evento 1");
+//        event3.put("description", "Exercício Prático");
+//        event3.put("timestart", "2012;4;14;19;30");
+//        event3.put("timedurationuntil", "2012;4;14;22;00");
+//        
+        //PARA O UPDATE
+//        Hashtable event1 = new Hashtable();
+//        event1.put("name", "evento 1 - atualizado");
+//        event1.put("description", "Exercício Prático");
+//        event1.put("timestart", "2012;4;10;19;30;0");
+//        event1.put("newname", "evento 1 - atualizado");
+//        event1.put("newdescription", "");
+//        event1.put("newtimestart", "");
+//        Hashtable event2 = new Hashtable();
+//        event2.put("name", "evento 2");
+//        event2.put("description", "Aula teórica");
+//        event2.put("timestart", "2012;4;11;19;30;0");
+//        event2.put("newname", "");
+//        event2.put("newdescription", "Aula teórica 2");
+//        event2.put("newtimestart", "2012;4;12;19;30;0");
+        
+        
        
-       Object[] calendar = new Object[]{event1, event2, event3};
+        Object[] calendar = new Object[]{event2};
 
         /// XML-RPC CALL
         String serverurl = domainName + "/webservice/xmlrpc/server.php" + "?wstoken=" + token + "&wsfunction=" + functionName;
@@ -76,7 +108,7 @@ public class XmlRpcIsmaClient {
         XmlRpcClient client = new XmlRpcClient();
         client.setConfig(config);
         
-        Object[] params = new Object[]{calendar};
+        Object[] params = new Object[]{calendar, 2, "",1};
         //Object[] result = (Object[]) client.execute(functionName, calendar);
         
         Object result = (Object) client.execute(functionName, params);
