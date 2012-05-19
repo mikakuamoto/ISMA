@@ -115,7 +115,7 @@ class local_isma_external extends external_api {
             $hourstart = explode(':', $timestarttemp[1]);
             $timestart = make_timestamp((int) $datestart[2], (int) $datestart[1], (int) $datestart[0], (int) $hourstart[0], (int) $hourstart[1]);
             
-            $timeendtemp = explode(';', $temp['timedurationuntil']);
+            $timeendtemp = explode(' ', $temp['timedurationuntil']);
             $dateend = explode('/', $timeendtemp[0]);
             $hourend = explode(':', $timeendtemp[1]);
             $timedurationuntil = make_timestamp((int) $dateend[2], (int) $dateend[1], (int) $dateend[0], (int) $hourend[0], (int) $hourend[1]);
@@ -190,7 +190,7 @@ class local_isma_external extends external_api {
             $hourstart = explode(':', $timestarttemp[1]);
             $timestart = make_timestamp((int) $datestart[2], (int) $datestart[1], (int) $datestart[0], (int) $hourstart[0], (int) $hourstart[1]);
             
-            $timeendtemp = explode(';', $temp['timedurationuntil']);
+            $timeendtemp = explode(' ', $temp['timedurationuntil']);
             $dateend = explode('/', $timeendtemp[0]);
             $hourend = explode(':', $timeendtemp[1]);
             $timedurationuntil = make_timestamp((int) $dateend[2], (int) $dateend[1], (int) $dateend[0], (int) $hourend[0], (int) $hourend[1]);
