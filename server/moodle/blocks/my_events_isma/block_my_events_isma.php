@@ -24,6 +24,11 @@ class block_my_events_isma extends block_base {
         if ($this->content !== NULL) {
             return $this->content;
         }
+        
+        if (empty($this->config->eventview)) {
+            $this->config->eventview = 'all';
+        }
+        
         $this->content = new stdClass;
         $this->content->text = '';
 
@@ -73,7 +78,6 @@ class block_my_events_isma extends block_base {
         }
         
         if (!empty($this->instance)) {
-            $this->config->eventview = 'all';
             if ($this->config->eventview == 'all'){
                 $this->content->text .= $this->block_my_events_isma_get_calendar($events, 'view.php?view=day&amp;course='.$courseshown.'&amp;');
             } else {
